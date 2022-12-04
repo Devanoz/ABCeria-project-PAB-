@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.auth.Register"
+    android:orientation="vertical"
+    android:background="#E3C62C"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="90dp"
+        android:text="Ayo buat akunmu..."
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="547dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/register_wrapper_field"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input_login_wrapper"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawablePadding="18dp"
+            android:hint="Email"
+            android:paddingLeft="15dp"
+            android:textColorHint="#A6000000" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_login_wrapper"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="18dp"
+            android:hint="Nama Lengkap"
+            android:paddingLeft="15dp"
+            android:textColorHint="#A6000000" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_login_wrapper"
+            android:drawableStart="@drawable/ic_account_20"
+            android:drawablePadding="18dp"
+            android:hint="Nama Pengguna"
+            android:paddingLeft="15dp"
+            android:textColorHint="#A6000000" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_login_wrapper"
+            android:drawableStart="@drawable/ic_lock_20"
+            android:drawablePadding="18dp"
+            android:hint="Kata Sandi"
+            android:paddingLeft="15dp"
+            android:textColorHint="#A6000000" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/input_login_wrapper"
+            android:drawableStart="@drawable/ic_account_20"
+            android:drawablePadding="18dp"
+            android:hint="Konfirmasi Kata Sandi"
+            android:paddingLeft="15dp"
+            android:textColorHint="#A6000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kata sandi tidak sesuai"
+            android:textStyle="bold"
+            android:textColor="#E63232"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <Button
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/rounded_button_masuk"
+            android:text="Daftar"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
