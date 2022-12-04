@@ -1,9 +1,7 @@
 package com.example.abceria.model.user
 
-class UserDetail(
-    val id: String,
+data class UserDetail(
+    val email: String,
     val fullName: String,
-    val profilePicture: String
-) {
-
-}
+    val profilePicture: String,
+)
