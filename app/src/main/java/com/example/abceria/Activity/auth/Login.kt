@@ -92,23 +92,47 @@ class Login : AppCompatActivity() {
         }
     }
 
-    private fun signUpUser(email: String, password: String){
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){
-                task ->
-            if(task.isSuccessful){
+    private fun loginWithEmailPassword(email: String, password: String){
+        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){
+            if(it.isSuccessful){
                 val user = auth.currentUser
-                Toast.makeText(this,"signup succed",Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this,"Authentication failed",Toast.LENGTH_SHORT).show()
+                //move to homepage
+            }else {
+                Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
             }
-        }.addOnSuccessListener {
-            Toast.makeText(this,"signup succed",Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun createUserWithEmailPassword(email: String,password: String){
+        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
+            if(it.isSuccessful){
+                val user = auth.currentUser
+                //update UI
+            }else {
+                Toast.makeText(this,"Auth failed",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    fun loginWithGoogle(){
+        oneTapClient.beginSignIn(signInRequest).addOnSuccessListener {
+            try {
+                println("open onetap UI")
+                startIntentSenderForResult(it.pendingIntent.intentSender,REQ_ONE_TAP,null,0,0,0,null)
+
+            }catch (e: IntentSender.SendIntentException){
+                Log.d("EROR AUTH","Couldnt start onetap UI ${e.localizedMessage}")
+            }
+        }.addOnFailureListener {
+            Log.d("EROR AUTH FAILURE","Couldnt start onetap UI ${it.localizedMessage}")
+        }
+    }
+
+
+
     override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
+        var currentUser = auth.currentUser
         if(currentUser != null){
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
