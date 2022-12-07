@@ -9,25 +9,26 @@
     android:background="#E3C62C"
     >
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="90dp"
-        android:text="Ayo buat akunmu..."
-        android:textColor="@color/white"
-        android:textSize="25dp"
-        android:textStyle="bold" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="406dp"
+        android:background="@drawable/_6569085_5100_9_06_min_min_prev_ui"
+        android:rotation="320"
+        android:rotationY="180"
+        android:layout_marginTop="40dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:scaleType="centerInside" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="547dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="180dp"
         android:background="@drawable/register_wrapper_field"
         android:orientation="vertical"
         >
@@ -99,18 +100,30 @@
             android:layout_marginTop="20dp"
             />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:background="@drawable/rounded_button_masuk"
             android:text="Daftar"
+            android:textColor="@color/white"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:text="Ayo buat akunmu..."
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+</RelativeLayout>
 
 
 </LinearLayout>
