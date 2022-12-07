@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.net.toFile
+import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.db.DB
 import com.example.abceria.model.user.UserDetail
 import com.google.firebase.storage.FirebaseStorage
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     val fireStore = DB.getFirestoreInstance()
 
-
+    val auth = Auth.getAuthInstance()
 
     val storage = DB.getStorageInstance()
 
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var tvUpload : TextView
     lateinit var imvPreview : ImageView
 
-    lateinit var imageURI : Uri ;
+    var imageURI: Uri? = null
 
     companion object {
         const val PICK_FILE_REQUEST = 1
@@ -61,8 +62,11 @@ class MainActivity : AppCompatActivity() {
 
         btnUpload.setOnClickListener{
             if(imageURI!=null){
-                addImage(imageURI)
+                addImage(imageURI!!)
+            }else {
+                auth.signOut()
             }
+
         }
 
 

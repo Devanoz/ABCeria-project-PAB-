@@ -52,17 +52,7 @@ class Login : AppCompatActivity() {
         ).build()
 
         btnLogin.setOnClickListener{
-            oneTapClient.beginSignIn(signInRequest).addOnSuccessListener {
-                try {
-                    println("open onetap UI")
-                    startIntentSenderForResult(it.pendingIntent.intentSender,REQ_ONE_TAP,null,0,0,0,null)
 
-                }catch (e: IntentSender.SendIntentException){
-                    Log.d("EROR AUTH","Couldnt start onetap UI ${e.localizedMessage}")
-                }
-            }.addOnFailureListener {
-                Log.d("EROR AUTH FAILURE","Couldnt start onetap UI ${it.localizedMessage}")
-            }
         }
 
 
