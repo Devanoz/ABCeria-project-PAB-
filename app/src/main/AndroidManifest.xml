@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ABCeria"
         tools:targetApi="31">
         <activity
-            android:name=".HalamanHome"
+            android:name=".Activity.home.HalamanHome"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
