@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.abceria.Activity.leaderboard.LeaderBoard
 import com.example.abceria.MainActivity
@@ -23,16 +24,18 @@ import com.google.firebase.auth.GoogleAuthProvider
 class Login : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
 
+    private val currentUser = auth.currentUser
+
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
+    private lateinit var tvRegister : TextView
 
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
 
     private val REQ_ONE_TAP = 2
     private var showOneTapUi = true
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +45,7 @@ class Login : AppCompatActivity() {
         etEmail = findViewById(R.id.login_et_email)
         etPassword = findViewById(R.id.login_et_password)
         btnLogin = findViewById(R.id.login_btn_login)
+        tvRegister = findViewById(R.id.login_tv_register)
 
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder().setGoogleIdTokenRequestOptions(
@@ -54,7 +58,14 @@ class Login : AppCompatActivity() {
         ).build()
 
         btnLogin.setOnClickListener{
+            val email = etEmail.text.toString()
+            val password = etPassword.text.toString()
+            loginWithEmailPassword(email,password)
+        }
 
+        tvRegister.setOnClickListener{
+            val intent = Intent(this,Register::class.java)
+            this.startActivity(intent)
         }
 
 
@@ -99,22 +110,14 @@ class Login : AppCompatActivity() {
             if(it.isSuccessful){
                 val user = auth.currentUser
                 //move to homepage
+                startActivity(Intent(this,MainActivity::class.java))
             }else {
                 Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun createUserWithEmailPassword(email: String,password: String){
-        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this){
-            if(it.isSuccessful){
-                val user = auth.currentUser
-                //update UI
-            }else {
-                Toast.makeText(this,"Auth failed",Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+
 
     fun loginWithGoogle(){
         oneTapClient.beginSignIn(signInRequest).addOnSuccessListener {
@@ -130,14 +133,4 @@ class Login : AppCompatActivity() {
         }
     }
 
-
-
-    override fun onStart() {
-        super.onStart()
-        var currentUser = auth.currentUser
-        if(currentUser != null){
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
-        }
-    }
 }

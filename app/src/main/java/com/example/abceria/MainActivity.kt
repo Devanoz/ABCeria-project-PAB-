@@ -2,32 +2,23 @@ package com.example.abceria
 
 import android.app.Activity
 import android.content.Intent
-import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.FileUtils
-import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.net.toFile
 import com.example.abceria.Activity.auth.Auth
+import com.example.abceria.Activity.auth.Login
 import com.example.abceria.db.DB
-import com.example.abceria.model.user.UserDetail
-
-import java.io.File
-import java.io.FileInputStream
-import java.io.IOException
-import java.util.*
-
 
 class MainActivity : AppCompatActivity() {
 
     val fireStore = DB.getFirestoreInstance()
 
     val auth = Auth.getAuthInstance()
+    val currentUser = auth.currentUser
 
     val storage = DB.getStorageInstance()
 
@@ -89,13 +80,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    fun addUserDetail(userDetail: UserDetail){
-        fireStore.collection("user-detail").add(userDetail).addOnSuccessListener {
-            Toast.makeText(this,"berhasil menambahkan data",Toast.LENGTH_LONG)
-        }.addOnFailureListener {
-            Toast.makeText(this,"gagal menambahkan data",Toast.LENGTH_LONG)
-        }
-    }
+//    fun addUserDetail(userDetail: UserDetail){
+//        fireStore.collection("user-detail").add(userDetail).addOnSuccessListener {
+//            Toast.makeText(this,"berhasil menambahkan data",Toast.LENGTH_LONG)
+//        }.addOnFailureListener {
+//            Toast.makeText(this,"gagal menambahkan data",Toast.LENGTH_LONG)
+//        }
+//    }
 
     fun addImage(uri: Uri){
 
@@ -109,6 +100,15 @@ class MainActivity : AppCompatActivity() {
 
         profileRef.putFile(file)
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(currentUser == null){
+            startActivity(Intent(this,Login::class.java))
+        }else{
+            println(currentUser.displayName)
+        }
     }
 
 

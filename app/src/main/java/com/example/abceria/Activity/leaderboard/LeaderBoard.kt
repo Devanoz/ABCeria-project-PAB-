@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.abceria.R
 import com.example.abceria.adapter.LeaderboardAdapter
 import com.example.abceria.db.DB
-import com.example.abceria.model.leaderboard.Leaderboard
 import com.example.abceria.model.user.User
-import com.example.abceria.model.user.UserDetail
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.DocumentReference
 import java.util.UUID
 
@@ -40,43 +37,43 @@ class LeaderBoard : AppCompatActivity() {
 //        addValueToDatabase()
 
 //        addUserToDatabase()
-        getUserFromDatabase()
+
     }
 
-    private fun addUserToDatabase(){
-        val userRef = fsDatabase.collection("user")
-        userRef.add(
-            User("1","devano","asdf")
-        ).addOnSuccessListener {
-            Toast.makeText(this,"sukses menambahkan data",Toast.LENGTH_SHORT)
-        }.addOnFailureListener {
-            Toast.makeText(this,"gagal menambahkan data",Toast.LENGTH_SHORT)
-        }
-    }
-    private fun getUserFromDatabase(){
-        fsDatabase.collection("user").get().addOnSuccessListener{
-            val listDocument = it.documents
-            listDocument.forEach { document ->
-                val userMap = document.data
-                var userDetail = userMap?.get("userDetail") as DocumentReference
-                val user = User(UUID.randomUUID().toString(), userMap?.get("username").toString(),
-                    userMap?.get("password").toString(),null
-                )
-               userDetail.get().addOnSuccessListener { it ->
-                   val data = it.data as UserDetail
-                   println(data.fullName)
-               }.addOnFailureListener {
-                   println("asuu")
-               }
-                userList.add(user)
-            }
-
-            initRecyclerView(userList)
-
-        }.addOnFailureListener {
-            Toast.makeText(this,"gagal mendapatkan data",Toast.LENGTH_SHORT)
-        }
-    }
+//    private fun addUserToDatabase(){
+//        val userRef = fsDatabase.collection("user")
+//        userRef.add(
+//            User("1","devano","asdf")
+//        ).addOnSuccessListener {
+//            Toast.makeText(this,"sukses menambahkan data",Toast.LENGTH_SHORT)
+//        }.addOnFailureListener {
+//            Toast.makeText(this,"gagal menambahkan data",Toast.LENGTH_SHORT)
+//        }
+//    }
+//    private fun getUserFromDatabase(){
+//        fsDatabase.collection("user").get().addOnSuccessListener{
+//            val listDocument = it.documents
+//            listDocument.forEach { document ->
+//                val userMap = document.data
+//                var userDetail = userMap?.get("userDetail") as DocumentReference
+//                val user = User(UUID.randomUUID().toString(), userMap?.get("username").toString(),
+//                    userMap?.get("password").toString(),null
+//                )
+//               userDetail.get().addOnSuccessListener { it ->
+//                   val data = it.data as UserDetail
+//                   println(data.fullName)
+//               }.addOnFailureListener {
+//                   println("asuu")
+//               }
+//                userList.add(user)
+//            }
+//
+//            initRecyclerView(userList)
+//
+//        }.addOnFailureListener {
+//            Toast.makeText(this,"gagal mendapatkan data",Toast.LENGTH_SHORT)
+//        }
+//    }
 
 //    private fun getValueFromDatabase(){
 //        database.getReference("leaderboard").get().addOnSuccessListener {
@@ -96,19 +93,19 @@ class LeaderBoard : AppCompatActivity() {
 //        }
 //    }
 
-    private fun addValueToDatabase(){
-        database.getReference("leaderboard").child("4").setValue(
-            Leaderboard(
-                User("4","Mayla Ayyuni Sonya","asdf",null),
-                500
-            )
-
-        ).addOnSuccessListener {
-            Toast.makeText(this,"berhasil menambahkan data",Toast.LENGTH_LONG)
-        }.addOnFailureListener {
-            Toast.makeText(this,"gagal menambahkan data",Toast.LENGTH_LONG)
-        }
-    }
+//    private fun addValueToDatabase(){
+//        database.getReference("leaderboard").child("4").setValue(
+//            Leaderboard(
+//                User("4","Mayla Ayyuni Sonya","asdf",null),
+//                500
+//            )
+//
+//        ).addOnSuccessListener {
+//            Toast.makeText(this,"berhasil menambahkan data",Toast.LENGTH_LONG)
+//        }.addOnFailureListener {
+//            Toast.makeText(this,"gagal menambahkan data",Toast.LENGTH_LONG)
+//        }
+//    }
 
     fun initRecyclerView(listOfLeaderboard: ArrayList<User>){
         rvLeaderboard = findViewById(R.id.leaderboard_rv_leaderboard)
