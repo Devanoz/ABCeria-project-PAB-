@@ -1,5 +1,6 @@
 package com.example.abceria.Activity.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentSender
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class Login : AppCompatActivity() {
 
     private val REQ_ONE_TAP = 2
     private var showOneTapUi = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -16,8 +16,7 @@ import androidx.core.net.toFile
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.db.DB
 import com.example.abceria.model.user.UserDetail
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
+
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
