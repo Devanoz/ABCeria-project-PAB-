@@ -14,14 +14,14 @@
         android:theme="@style/Theme.ABCeria"
         tools:targetApi="31">
         <activity
-            android:name=".editProfile"
+            android:name=".Activity.settings.editProfile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Settings"
+            android:name=".Activity.settings.Settings"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -3,17 +3,19 @@ package com.example.abceria.Activity.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.R
 import com.example.abceria.db.DB
 import com.example.abceria.model.user.User
+import com.example.abceria.state.UserState
 
 
 class HalamanHome : AppCompatActivity() {
 
     private lateinit var tvUsername: TextView
     private val fireStore = DB.getFirestoreInstance()
-    private val user = Auth.getAuthInstance().currentUser
+    private val currentUser = Auth.getAuthInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +23,27 @@ class HalamanHome : AppCompatActivity() {
         supportActionBar?.hide()
 
         tvUsername = findViewById(R.id.home_tv_username)
-
+        tvUsername.text = UserState.username
     }
+
+
+    override fun onStart() {
+        super.onStart()
+        setProfileUsername()
+    }
+
+    private fun setProfileUsername(){
+        fireStore.collection("user").document(currentUser!!.uid).get().addOnSuccessListener {
+            val user = it.toObject(User::class.java)
+            if (user != null) {
+                UserState.fullName = user.fullName.toString()
+                UserState.username = user.username.toString()
+                UserState.profilePicture = user.profilePicture.toString()
+                UserState.score = user.score!!
+            }
+        }
+    }
+
 
 
 }

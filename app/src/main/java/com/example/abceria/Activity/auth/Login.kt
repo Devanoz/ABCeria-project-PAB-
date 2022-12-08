@@ -111,9 +111,7 @@ class Login : AppCompatActivity() {
     private fun loginWithEmailPassword(email: String, password: String){
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){
             if(it.isSuccessful){
-                val user = auth.currentUser
                 //move to homepage
-                setProfileUsername()
                 startActivity(Intent(this,HalamanHome::class.java))
             }else {
                 Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
@@ -121,17 +119,6 @@ class Login : AppCompatActivity() {
         }
     }
 
-    private fun setProfileUsername(){
-        fireStore.collection("user").document(currentUser!!.uid).get().addOnSuccessListener {
-            val user = it.toObject(User::class.java)
-            if (user != null) {
-                UserState.fullName = user.fullName.toString()
-                UserState.username = user.username.toString()
-                UserState.profilePicture = user.profilePicture.toString()
-                UserState.score = user.score!!
-            }
-        }
-    }
 
 
 
