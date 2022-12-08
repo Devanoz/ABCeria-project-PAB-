@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.settings.Settings"
+    android:background="#8FBC1C">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/a"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Zhong Xina"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="bingchillin@haiyya.com"
+        android:gravity="center"
+        android:textColor="@color/white"
+        />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawablePadding="85dp"
+        android:paddingLeft="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/input_login_wrapper"
+        android:drawableStart="@drawable/ic_baseline_edit_24"
+        android:text="Edit Profile"
+        android:textStyle="normal" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:drawablePadding="85dp"
+        android:paddingLeft="20dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/input_login_wrapper"
+        android:drawableStart="@drawable/ic_baseline_notifications_24"
+        android:text="Notification"
+        android:textStyle="normal" />
+
+</LinearLayout>
