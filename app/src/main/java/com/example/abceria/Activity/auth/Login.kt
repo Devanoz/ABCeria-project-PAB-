@@ -1,6 +1,5 @@
 package com.example.abceria.Activity.auth
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentSender
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +9,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.abceria.Activity.home.HalamanHome
 import com.example.abceria.Activity.leaderboard.LeaderBoard
-import com.example.abceria.MainActivity
 import com.example.abceria.R
+import com.example.abceria.db.DB
+import com.example.abceria.model.user.User
+import com.example.abceria.state.UserState
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -23,6 +25,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 class Login : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
+    private val fireStore = DB.getFirestoreInstance()
 
     private val currentUser = auth.currentUser
 
@@ -110,9 +113,22 @@ class Login : AppCompatActivity() {
             if(it.isSuccessful){
                 val user = auth.currentUser
                 //move to homepage
-                startActivity(Intent(this,MainActivity::class.java))
+                setProfileUsername()
+                startActivity(Intent(this,HalamanHome::class.java))
             }else {
                 Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun setProfileUsername(){
+        fireStore.collection("user").document(currentUser!!.uid).get().addOnSuccessListener {
+            val user = it.toObject(User::class.java)
+            if (user != null) {
+                UserState.fullName = user.fullName.toString()
+                UserState.username = user.username.toString()
+                UserState.profilePicture = user.profilePicture.toString()
+                UserState.score = user.score!!
             }
         }
     }
@@ -130,6 +146,13 @@ class Login : AppCompatActivity() {
             }
         }.addOnFailureListener {
             Log.d("EROR AUTH FAILURE","Couldnt start onetap UI ${it.localizedMessage}")
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(currentUser != null){
+            startActivity(Intent(this,HalamanHome::class.java))
         }
     }
 
