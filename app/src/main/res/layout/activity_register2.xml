@@ -33,6 +33,7 @@
         android:orientation="vertical"
         >
         <EditText
+            android:id="@+id/register_et_email"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -44,6 +45,7 @@
             android:paddingLeft="15dp"
             android:textColorHint="#A6000000" />
         <EditText
+            android:id="@+id/register_et_fullName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -56,6 +58,7 @@
             android:textColorHint="#A6000000" />
 
         <EditText
+            android:id="@+id/register_et_username"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -63,11 +66,12 @@
             android:background="@drawable/input_login_wrapper"
             android:drawableStart="@drawable/ic_account_20"
             android:drawablePadding="18dp"
-            android:hint="Nama Pengguna"
+            android:hint="Username"
             android:paddingLeft="15dp"
             android:textColorHint="#A6000000" />
 
         <EditText
+            android:id="@+id/register_et_password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -79,6 +83,7 @@
             android:paddingLeft="15dp"
             android:textColorHint="#A6000000" />
         <EditText
+            android:id="@+id/register_et_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -91,24 +96,37 @@
             android:textColorHint="#A6000000" />
 
         <TextView
+            android:id="@+id/register_et_alert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kata sandi tidak sesuai"
-            android:textStyle="bold"
-            android:textColor="#E63232"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
-            />
+            android:text="Kata sandi tidak sesuai"
+            android:textColor="#E63232"
+            android:textStyle="bold" />
+
+
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register_btn_register"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rounded_button_masuk"
             android:text="Daftar"
             android:textColor="@color/white"
             android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/register_pb_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:minHeight="20dp"
+            android:minWidth="20dp"
+            />
 
     </LinearLayout>
 
