@@ -1,8 +1,11 @@
 package com.example.abceria.model.user
 
+import android.net.Uri
+
 data class User(
-    private val id: String,
-    private val username: String,
-    private val password: String,
-    private val user_detail: UserDetail
+    val id: String,
+    var fullName: String,
+    var username: String,
+    var profilePicture: Uri = Uri.EMPTY,
+    var score: Int = 0,
 )

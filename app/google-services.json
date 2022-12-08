@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "252897231009-0tscia20uo6b4bhnhiit1vqimhev665r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abceria",
+            "certificate_hash": "ba70f413e7ae3aa4e1c5a644bcfe283559361e2b"
+          }
+        },
+        {
           "client_id": "252897231009-qm72pp0ghj03dmau67l61ea0h7sl9itl.apps.googleusercontent.com",
           "client_type": 3
         }
