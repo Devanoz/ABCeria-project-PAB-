@@ -104,6 +104,7 @@
             android:textColor="@color/white"/>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/settings_btn_logout"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"

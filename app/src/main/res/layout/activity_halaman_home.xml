@@ -47,6 +47,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/home_imv_profile"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="left"
@@ -88,7 +89,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <Button
-                    android:id="@+id/icon_burger"
+                    android:id="@+id/home_btn_icon_burger"
                     android:layout_width="48dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="5dp"
