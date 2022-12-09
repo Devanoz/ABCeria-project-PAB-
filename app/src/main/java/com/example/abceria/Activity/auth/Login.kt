@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.firebase.auth.GoogleAuthProvider
+import java.util.*
 
 
 class Login : AppCompatActivity() {
@@ -33,6 +34,7 @@ class Login : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
     private lateinit var tvRegister : TextView
+    private lateinit var tvAlert: TextView
 
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
@@ -49,6 +51,7 @@ class Login : AppCompatActivity() {
         etPassword = findViewById(R.id.login_et_password)
         btnLogin = findViewById(R.id.login_btn_login)
         tvRegister = findViewById(R.id.login_tv_register)
+        tvAlert = findViewById(R.id.login_tv_alert)
 
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder().setGoogleIdTokenRequestOptions(
@@ -60,9 +63,11 @@ class Login : AppCompatActivity() {
                 .build()
         ).build()
 
+
+
         btnLogin.setOnClickListener{
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
             loginWithEmailPassword(email,password)
         }
 
@@ -116,6 +121,8 @@ class Login : AppCompatActivity() {
             }else {
                 Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
             }
+        }.addOnFailureListener{
+            tvAlert.text = "Email atau Password salah"
         }
 
     }
