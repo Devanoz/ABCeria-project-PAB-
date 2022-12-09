@@ -23,24 +23,16 @@ class HalamanHome : AppCompatActivity() {
         supportActionBar?.hide()
 
         tvUsername = findViewById(R.id.home_tv_username)
-        tvUsername.text = UserState.username
+       setProfileUsername()
     }
 
 
-    override fun onStart() {
-        super.onStart()
-        setProfileUsername()
-    }
+
 
     private fun setProfileUsername(){
         fireStore.collection("user").document(currentUser!!.uid).get().addOnSuccessListener {
             val user = it.toObject(User::class.java)
-            if (user != null) {
-                UserState.fullName = user.fullName.toString()
-                UserState.username = user.username.toString()
-                UserState.profilePicture = user.profilePicture.toString()
-                UserState.score = user.score!!
-            }
+            tvUsername.text = user?.username
         }
     }
 
