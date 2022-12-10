@@ -13,15 +13,13 @@ import com.example.abceria.Activity.home.HalamanHome
 import com.example.abceria.Activity.leaderboard.LeaderBoard
 import com.example.abceria.R
 import com.example.abceria.db.DB
-import com.example.abceria.model.user.User
-import com.example.abceria.state.UserState
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.firebase.auth.GoogleAuthProvider
-import java.util.*
+
 
 
 class Login : AppCompatActivity() {
@@ -116,6 +114,7 @@ class Login : AppCompatActivity() {
     private fun loginWithEmailPassword(email: String, password: String){
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){
             if(it.isSuccessful){
+                val userUid = currentUser?.uid
                 //move to homepage
                 startActivity(Intent(this,HalamanHome::class.java))
             }else {

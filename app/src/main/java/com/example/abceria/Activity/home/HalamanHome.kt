@@ -12,6 +12,7 @@ import com.example.abceria.R
 import com.example.abceria.db.DB
 import com.example.abceria.model.user.User
 import com.example.abceria.state.UserState
+import com.google.firebase.firestore.EventListener
 
 
 class HalamanHome : AppCompatActivity() {
@@ -38,14 +39,22 @@ class HalamanHome : AppCompatActivity() {
         }
     }
 
-
-
-
     private fun setProfileUsername(){
-        fireStore.collection("user").document(currentUser!!.uid).get().addOnSuccessListener {
-            val user = it.toObject(User::class.java)
-            tvUsername.text = user?.username
+        val userNameRef = fireStore.collection("user").document(currentUser!!.uid);
+        userNameRef.addSnapshotListener{ snapshot, e ->
+            if (e != null) {
+               //
+                return@addSnapshotListener
+            }
+
+            if (snapshot != null && snapshot.exists()) {
+                val user = snapshot.toObject(User::class.java)
+                tvUsername.text = user?.username
+            } else {
+                //current data null
+            }
         }
+
     }
 
 

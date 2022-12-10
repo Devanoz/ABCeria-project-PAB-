@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.R
 import com.example.abceria.db.DB
+import com.example.abceria.model.user.User
 import com.google.firebase.firestore.SetOptions
 
 
@@ -44,15 +45,29 @@ class editProfile : AppCompatActivity() {
 
                 val usernameToUpdate = etUsername.text.toString()
                 val fullNameToUpdate = etFullName.text.toString()
+                val user = User()
+                user.username = usernameToUpdate
+                user.fullName = fullNameToUpdate
 
-                val user = HashMap<String,Any>()
-                user["username"] = usernameToUpdate
-                user["fullName"] = fullNameToUpdate
-                firestore.collection("user").document(userUid).set(user, SetOptions.mergeFields()).addOnSuccessListener {
-                    Toast.makeText(this,"Data profil berhasil di update",Toast.LENGTH_SHORT)
+
+
+                firestore.collection("user").document(userUid).get().addOnSuccessListener {
+                    val userData = it.data
+                    if(userData != null){
+                        firestore.collection("user").document(userUid).set(user, SetOptions.merge()).addOnSuccessListener {
+                            Toast.makeText(this,"Data profil berhasil di update",Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener {
+                            Toast.makeText(this,"Data gagal di update",Toast.LENGTH_SHORT).show()
+                        }
+                    }else {
+                        firestore.collection("user").document(userUid).set(user).addOnSuccessListener {
+                            Toast.makeText(this,"data profile baru ditambahakan",Toast.LENGTH_SHORT).show()
+                        }.addOnFailureListener{
+                            Toast.makeText(this,"data gagal ditambahakan",Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
-            firestore.collection("user").document()
         }
         getProfileData()
     }
