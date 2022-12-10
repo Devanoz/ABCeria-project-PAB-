@@ -9,6 +9,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
 import com.example.abceria.db.DB
@@ -50,14 +54,17 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, PICK_FILE_REQUEST)
         }
 
-        btnUpload.setOnClickListener{
-            if(imageURI!=null){
+        btnUpload.setOnClickListener {
+            if (imageURI != null) {
                 addImage(imageURI!!)
-            }else {
+            } else {
                 auth.signOut()
             }
 
         }
+
+
+
 
 
     }
