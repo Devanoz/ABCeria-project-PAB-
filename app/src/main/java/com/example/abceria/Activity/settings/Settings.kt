@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
 import com.example.abceria.Activity.home.HalamanHome
@@ -29,6 +30,7 @@ class Settings : AppCompatActivity() {
     private lateinit var tvEmail: TextView
     private lateinit var imvProfile: ImageView
 
+    private lateinit var toolbar: Toolbar
     //userState
     private val userState = StateFactory.getUserStateInstance()
 
@@ -36,11 +38,17 @@ class Settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        initComponents() ;setProfileImage()
+
+        setSupportActionBar(toolbar)
         supportActionBar?.title = "Settings"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        initComponents()
+
+
+
         btnLogout.setOnClickListener {
             auth.signOut()
+            StateFactory.destroy()
             val intent = Intent(this,Login::class.java)
             startActivity(intent)
         }
@@ -65,6 +73,7 @@ class Settings : AppCompatActivity() {
         tvFullName = findViewById(R.id.settings_tv_fullName)
         tvEmail = findViewById(R.id.settings_tv_email)
         imvProfile = findViewById(R.id.settings_imv_profileImage)
+        toolbar = findViewById(R.id.settings_toolbar)
     }
 
     private fun setProfileImage(){
@@ -81,6 +90,13 @@ class Settings : AppCompatActivity() {
         super.onResume()
         setProfileDetail()
         setProfileImage()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(currentUser == null){
+            startActivity(Intent(this,Login::class.java))
+        }
     }
 
 }

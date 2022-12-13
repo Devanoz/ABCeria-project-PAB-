@@ -48,8 +48,10 @@ class Register : AppCompatActivity() {
         val userTobeAdded = User(
             fullName = etFullName.text.toString(),
             username = etUsername.text.toString(),
+            profilePicture = "",
+            score = 0
         )
-        userRef.document(user?.uid!!).set(userTobeAdded)
+
     }
 
     private fun createUserWithEmailPassword(email: String,password: String){

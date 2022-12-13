@@ -64,12 +64,12 @@ class HalamanHome : AppCompatActivity() {
     }
 
     private fun setProfileImage(){
-        val storageRef = firebaseStorage.reference
-        storageRef.child("/profile-image/013bb0dd-4979-4b56-84a9-18f10d4c9061").getBytes(Long.MAX_VALUE).addOnSuccessListener {
-            val bitmapProfile = BitmapFactory.decodeByteArray(it,0,it.size)
-            userState.profilePicture = bitmapProfile
-            imvProfile.setImageBitmap(userState.profilePicture)
-        }
+//        val storageRef = firebaseStorage.reference
+//        storageRef.child("/profile-image/013bb0dd-4979-4b56-84a9-18f10d4c9061").getBytes(Long.MAX_VALUE).addOnSuccessListener {
+//            val bitmapProfile = BitmapFactory.decodeByteArray(it,0,it.size)
+//            userState.profilePicture = bitmapProfile
+//            imvProfile.setImageBitmap(userState.profilePicture)
+//        }
 
     }
 

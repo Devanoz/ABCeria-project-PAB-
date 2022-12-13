@@ -1,9 +1,12 @@
 package com.example.abceria
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.example.abceria.Activity.auth.Auth
+import com.example.abceria.Activity.auth.Login
 import com.example.abceria.fragment.Home
 import com.example.abceria.fragment.Leaderboard
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,16 +14,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private val currentUser = Auth.getAuthInstance().currentUser
+
     private lateinit var bottomNavigation: BottomNavigationView
     private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        toolbar = findViewById(R.id.home_action_bar)
         initComponents()
         createComponentListener()
-
-        toolbar.title = "cek"
 
     }
 
@@ -62,6 +66,13 @@ class MainActivity : AppCompatActivity() {
             true
         }
         bottomNavigation.selectedItemId = R.id.home_icon
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(currentUser == null){
+            startActivity(Intent(this,Login::class.java))
+        }
     }
 
 }

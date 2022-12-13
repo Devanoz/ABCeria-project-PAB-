@@ -18,7 +18,7 @@ class LeaderboardAdapter(private val dataSet: java.util.ArrayList<User>):
 
             tvFullname.text = user.fullName
             tvUsername.text = user.username
-            tvPoints.text = user.score.toString()
+            tvPoints.text = user.score?.toString()
 
         }
     }

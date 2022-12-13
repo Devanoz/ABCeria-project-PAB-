@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.abceria"
-        minSdk 25
+        minSdk 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -54,5 +54,4 @@ dependencies {
     //auth
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.android.gms:play-services-auth:20.4.0'
-
 }

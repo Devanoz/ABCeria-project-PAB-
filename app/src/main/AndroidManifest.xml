@@ -59,17 +59,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".editProfile"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value=""
-                />
-        </activity>
+
         <activity
             android:name=".Activity.settings.Settings"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

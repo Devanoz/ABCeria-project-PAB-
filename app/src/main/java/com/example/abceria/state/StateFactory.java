@@ -9,4 +9,9 @@ public class StateFactory {
         }
         return userState;
     }
+
+
+    public static void destroy(){
+        userState = null;
+    }
 }
