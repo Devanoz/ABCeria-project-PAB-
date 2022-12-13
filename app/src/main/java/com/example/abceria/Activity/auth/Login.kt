@@ -10,11 +10,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.abceria.Activity.home.HalamanHome
-import com.example.abceria.Activity.leaderboard.LeaderBoard
+import com.example.abceria.MainActivity
 import com.example.abceria.R
 import com.example.abceria.db.DB
+import com.example.abceria.state.StateFactory
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
@@ -40,6 +40,9 @@ class Login : AppCompatActivity() {
     private val REQ_ONE_TAP = 2
     private var showOneTapUi = true
 
+    //user state
+    private val userState = StateFactory.getUserStateInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -51,15 +54,15 @@ class Login : AppCompatActivity() {
         tvRegister = findViewById(R.id.login_tv_register)
         tvAlert = findViewById(R.id.login_tv_alert)
 
-        oneTapClient = Identity.getSignInClient(this)
-        signInRequest = BeginSignInRequest.builder().setGoogleIdTokenRequestOptions(
-            BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                .setSupported(true)
-                .setServerClientId(getString(R.string.CLIENT_ID))
-                .setFilterByAuthorizedAccounts(false)
-
-                .build()
-        ).build()
+//        oneTapClient = Identity.getSignInClient(this)
+//        signInRequest = BeginSignInRequest.builder().setGoogleIdTokenRequestOptions(
+//            BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+//                .setSupported(true)
+//                .setServerClientId(getString(R.string.CLIENT_ID))
+//                .setFilterByAuthorizedAccounts(false)
+//
+//                .build()
+//        ).build()
 
 
 
@@ -89,8 +92,7 @@ class Login : AppCompatActivity() {
                             val firebaseCredential = GoogleAuthProvider.getCredential(idToken,null)
                             auth.signInWithCredential(firebaseCredential).addOnCompleteListener{
                                 if(it.isSuccessful){
-                                    val intent = Intent(this,LeaderBoard::class.java)
-                                    startActivity(intent)
+                                    //do something
                                 }else {
                                     Toast.makeText(this,"Gagal autentikasi dengan google",Toast.LENGTH_LONG).show()
                                 }
@@ -116,7 +118,7 @@ class Login : AppCompatActivity() {
             if(it.isSuccessful){
                 val userUid = currentUser?.uid
                 //move to homepage
-                startActivity(Intent(this,HalamanHome::class.java))
+                startActivity(Intent(this,MainActivity::class.java))
             }else {
                 Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
             }

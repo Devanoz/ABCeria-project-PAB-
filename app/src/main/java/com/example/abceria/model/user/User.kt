@@ -1,7 +1,5 @@
 package com.example.abceria.model.user
 
-import android.net.Uri
-
 class User(
     var fullName: String?,
     var username: String?,
@@ -11,4 +9,6 @@ class User(
     constructor() : this(null,null,null,null) {
 
     }
+
+
 }

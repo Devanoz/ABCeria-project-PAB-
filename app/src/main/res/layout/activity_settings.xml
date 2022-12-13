@@ -8,17 +8,12 @@
     tools:context=".Activity.settings.Settings"
     android:background="#8FBC1C">
 
-    <RelativeLayout
-        android:layout_width="55dp"
-        android:layout_height="43dp"
-        android:background="@drawable/ic_baseline_navigate_next_24"
-        android:rotation="180"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"/>
+
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/settings_imv_profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/a"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"

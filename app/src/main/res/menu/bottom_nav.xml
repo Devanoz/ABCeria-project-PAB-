@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:title="Home"
-        android:id="@+id/home_icon"
-        android:icon="@drawable/ic_baseline_home_24"/>
-    <item android:title="Materi"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:title="Materi"
         android:id="@+id/materi_icon"
         android:icon="@drawable/ic_baseline_book_24"/>
     <item android:title="Leaderboard"
         android:id="@+id/leaderboard_icon"
         android:icon="@drawable/ic_baseline_leaderboard_24"/>
+    <item android:title="Home"
+        android:id="@+id/home_icon"
+        android:icon="@drawable/ic_baseline_home_24"/>
     <item android:title="Kuis"
         android:id="@+id/kuis_icon"
         android:icon="@drawable/ic_baseline_wysiwyg_24"/>
