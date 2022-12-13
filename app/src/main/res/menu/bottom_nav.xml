@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="Home"
+    <item
+        android:title="Home"
         android:id="@+id/home_icon"
-        android:icon="@drawable/ic_baseline_home_24"/>
-    <item android:title="Materi"
+        android:icon="@drawable/ic_baseline_home_24"
+        app:cnb_iconColor="#000000"
+        />
+
+    <item
+        android:title="Belajar"
         android:id="@+id/materi_icon"
-        android:icon="@drawable/ic_baseline_book_24"/>
-    <item android:title="Leaderboard"
+        android:icon="@drawable/ic_baseline_abc_24"
+        app:cnb_iconColor="#FFEB3B"
+        />
+
+    <item
+        android:title="Skor"
         android:id="@+id/leaderboard_icon"
-        android:icon="@drawable/ic_baseline_leaderboard_24"/>
-    <item android:title="Kuis"
+        android:icon="@drawable/ic_baseline_leaderboard_24"
+        app:cnb_iconColor="#2196F3"
+        />
+
+    <item
+        android:title="Kuis"
         android:id="@+id/kuis_icon"
-        android:icon="@drawable/ic_baseline_wysiwyg_24"/>
-    <item android:title="Profil"
-        android:id="@+id/profil_icon"
-        android:icon="@drawable/ic_baseline_person_24"/>
+        android:icon="@drawable/ic_baseline_quiz_24"
+        app:cnb_iconColor="#4CAF50"
+        />
+
 </menu>

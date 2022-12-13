@@ -8,13 +8,14 @@ import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
 import com.example.abceria.R
 
-class Settings : AppCompatActivity() {
 
+class Settings : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
     private lateinit var btnLogout: Button
     private val currentUser = auth.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
@@ -31,6 +32,8 @@ class Settings : AppCompatActivity() {
             }
 
         }
+
+
     }
 
 }

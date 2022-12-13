@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -54,5 +57,7 @@ dependencies {
     //auth
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'
+
 
 }

@@ -9,11 +9,15 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
+import com.example.abceria.databinding.ActivityMainBinding
 import com.example.abceria.db.DB
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var  binding: ActivityMainBinding
 
     val fireStore = DB.getFirestoreInstance()
 
@@ -36,7 +40,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+        setupTabBar()
 
         btnUpload = findViewById(R.id.main_btn_upload)
         btnChooseFile = findViewById(R.id.main_btn_choose_file)
@@ -59,6 +68,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+    }
+
+    private fun setupTabBar() {
 
     }
 
