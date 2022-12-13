@@ -89,7 +89,7 @@
                 android:id="@+id/leaderboard_tv_top2_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="syuh"
+                android:text="syuhs"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:layout_marginTop="50dp"
