@@ -16,16 +16,15 @@ class LeaderboardAdapter(private val dataSet: java.util.ArrayList<User>):
             val tvUsername : TextView = itemView.findViewById(R.id.leaderboard_tv_userName)
             val tvPoints: TextView = itemView.findViewById(R.id.leaderboard_tv_points)
 
-            tvFullname.text = user.username
+            tvFullname.text = user.fullName
             tvUsername.text = user.username
-            tvPoints.text = "213 Pts"
+            tvPoints.text = user.score?.toString()
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.leaderboard_rv_user,parent,false)
-
         return ViewHolder(view)
     }
 

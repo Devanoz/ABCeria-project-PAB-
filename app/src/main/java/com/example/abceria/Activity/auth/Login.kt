@@ -43,7 +43,6 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        supportActionBar?.hide()
         // Initialize Firebase Auth
         etEmail = findViewById(R.id.login_et_email)
         etPassword = findViewById(R.id.login_et_password)
@@ -137,7 +136,7 @@ class Login : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if(currentUser != null){
-            startActivity(Intent(this,HalamanHome::class.java))
+            startActivity(Intent(this,MainActivity::class.java))
         }
     }
 

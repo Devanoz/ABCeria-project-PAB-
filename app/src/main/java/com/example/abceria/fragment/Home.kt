@@ -30,8 +30,6 @@ class Home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setProfileImage()
-
         tvUsername = view.findViewById(R.id.home_tv_username)
         imvProfile = view.findViewById(R.id.home_imv_profile)
         setProfileUsername()
@@ -40,6 +38,7 @@ class Home : Fragment() {
             val intent = Intent(this.context, Settings::class.java)
             this.startActivity(intent)
         }
+        setProfileImage()
     }
 
 
@@ -74,14 +73,21 @@ class Home : Fragment() {
     }
 
     private fun setProfileImage(){
-        val storageRef = firebaseStorage.reference
-        storageRef.child("/profile-image/013bb0dd-4979-4b56-84a9-18f10d4c9061").getBytes(Long.MAX_VALUE).addOnSuccessListener {
-            val bitmapProfile = BitmapFactory.decodeByteArray(it,0,it.size)
-            userState.profilePicture = bitmapProfile
+        if(userState.profilePicture == null){
+            fireStore.collection("user").document(currentUser?.uid!!).get().addOnSuccessListener {
+                firebaseStorage.reference.child(it.get("profilePicture").toString()).getBytes(Long.MAX_VALUE).addOnSuccessListener { it ->
+                    userState.profilePicture = BitmapFactory.decodeByteArray(it,0,it.size)
+                    imvProfile.setImageBitmap(userState.profilePicture)
+                }
+            }
+        }else{
             imvProfile.setImageBitmap(userState.profilePicture)
         }
 
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        setProfileImage()
+    }
 }
