@@ -11,12 +11,9 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
-import com.example.abceria.databinding.ActivityMainBinding
 import com.example.abceria.db.DB
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding : ActivityMainBinding
 
     val fireStore = DB.getFirestoreInstance()
 
@@ -39,8 +36,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
         btnUpload = findViewById(R.id.main_btn_upload)
         btnChooseFile = findViewById(R.id.main_btn_choose_file)
@@ -78,43 +74,19 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+            if (selectedFragment != null) {
+                supportFragmentManager.beginTransaction().replace(R.id.home_fragment_container,selectedFragment).commit()
+            }
+            true
         }
-
-    }
-
-
-
-//    fun addUserDetail(userDetail: UserDetail){
-//        fireStore.collection("user-detail").add(userDetail).addOnSuccessListener {
-//            Toast.makeText(this,"berhasil menambahkan data",Toast.LENGTH_LONG)
-//        }.addOnFailureListener {
-//            Toast.makeText(this,"gagal menambahkan data",Toast.LENGTH_LONG)
-//        }
-//    }
-
-    fun addImage(uri: Uri){
-
-        val storageRef = storage.reference
-//        val profileRef = storageRef.child("profile.jpg")
-//        val profileStorageRef = storageRef.child("/images/profile.jpg")
-
-        var file:Uri = uri
-
-        val profileRef = storageRef.child("/candi/${file.lastPathSegment}")
-
-        profileRef.putFile(file)
-
+        bottomNavigation.selectedItemId = R.id.home_icon
     }
 
     override fun onStart() {
         super.onStart()
         if(currentUser == null){
             startActivity(Intent(this,Login::class.java))
-        }else{
-            println(currentUser.displayName)
         }
     }
-
-
 
 }

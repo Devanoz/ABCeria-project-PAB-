@@ -6,23 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Activity.auth.Register"
     android:orientation="vertical"
-    android:background="#E3C62C"
+    android:background="@drawable/ui_2___halaman_registrasi"
     >
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="406dp"
-        android:background="@drawable/_6569085_5100_9_06_min_min_prev_ui"
-        android:rotation="320"
-        android:rotationY="180"
-        android:layout_marginTop="40dp"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:scaleType="centerInside" />
 
     <LinearLayout
         android:layout_width="match_parent"

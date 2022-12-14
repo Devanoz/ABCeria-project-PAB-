@@ -2,7 +2,6 @@ package com.example.abceria.Activity.auth
 
 import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -47,11 +46,12 @@ class Register : AppCompatActivity() {
     private fun saveUser(){
         val userRef = fireStore.collection("user")
         val userTobeAdded = User(
-            id = user?.uid!!,
             fullName = etFullName.text.toString(),
             username = etUsername.text.toString(),
+            profilePicture = "",
+            score = 0
         )
-        userRef.add(userTobeAdded)
+
     }
 
     private fun createUserWithEmailPassword(email: String,password: String){

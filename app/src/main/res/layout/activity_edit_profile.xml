@@ -13,23 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="180dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:gravity="center"
-            android:text="Edit Profil"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold" />
-
-
-
-
         <ImageView
+            android:id="@+id/edit_profile_imv_profileImage"
             android:layout_width="104dp"
             android:layout_height="103dp"
-
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
@@ -46,18 +33,6 @@
             android:layout_marginEnd="163dp"
             app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
 
-        <ImageView
-            android:layout_width="43dp"
-            android:layout_height="44dp"
-            android:layout_alignParentStart="true"
-
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="-5dp"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
     </RelativeLayout>
 
     <LinearLayout
@@ -69,6 +44,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/edit_profile_et_fullName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -82,6 +58,7 @@
 
 
         <EditText
+            android:id="@+id/edit_profile_et_username"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -93,19 +70,10 @@
             android:paddingLeft="15dp"
             android:textColorHint="#A6000000" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/input_login_wrapper"
-            android:drawableStart="@drawable/ic_baseline_email_24"
-            android:drawablePadding="18dp"
-            android:hint="Email"
-            android:paddingLeft="15dp"
-            android:textColorHint="#A6000000" />
+
 
         <EditText
+            android:id="@+id/edit_profile_et_password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
@@ -117,16 +85,8 @@
             android:paddingLeft="15dp"
             android:textColorHint="#A6000000" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:text="Kata sandi tidak sesuai"
-            android:textColor="#E63232"
-            android:textStyle="bold" />
-
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit_profile_btn_save"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
