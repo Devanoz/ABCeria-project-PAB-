@@ -1,7 +1,6 @@
 package com.example.abceria.Activity.home
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -13,7 +12,6 @@ import com.example.abceria.R
 import com.example.abceria.db.DB
 import com.example.abceria.model.user.User
 import com.example.abceria.state.StateFactory
-import com.example.abceria.state.UserState
 
 class HalamanHome : AppCompatActivity() {
 

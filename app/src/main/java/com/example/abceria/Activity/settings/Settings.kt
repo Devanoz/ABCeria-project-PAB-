@@ -1,22 +1,17 @@
 package com.example.abceria.Activity.settings
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
-import com.example.abceria.Activity.home.HalamanHome
 import com.example.abceria.R
 import com.example.abceria.db.DB
-import com.example.abceria.model.user.User
 import com.example.abceria.state.StateFactory
-import com.example.abceria.state.UserState
 import com.google.firebase.auth.FirebaseUser
 
 class Settings : AppCompatActivity() {
