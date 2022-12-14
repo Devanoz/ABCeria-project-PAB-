@@ -10,11 +10,12 @@ import com.example.abceria.Activity.auth.Login
 import com.example.abceria.fragment.Home
 import com.example.abceria.fragment.Leaderboard
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
 
-    private val currentUser = Auth.getAuthInstance().currentUser
+    private val auth = Auth.getAuthInstance()
+    private var currentUser: FirebaseUser? = null
 
     private lateinit var bottomNavigation: BottomNavigationView
     private lateinit var toolbar: Toolbar
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        currentUser = auth.currentUser
         if(currentUser == null){
             startActivity(Intent(this,Login::class.java))
         }

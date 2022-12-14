@@ -20,25 +20,31 @@ import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+
 
 
 class Login : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
     private val fireStore = DB.getFirestoreInstance()
 
-    private val currentUser = auth.currentUser
+    private var currentUser: FirebaseUser? = null
 
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
     private lateinit var tvRegister : TextView
+    private lateinit var tvAlert: TextView
 
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
 
     private val REQ_ONE_TAP = 2
     private var showOneTapUi = true
+
+    //user state
+    private val userState = StateFactory.getUserStateInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,20 +54,23 @@ class Login : AppCompatActivity() {
         etPassword = findViewById(R.id.login_et_password)
         btnLogin = findViewById(R.id.login_btn_login)
         tvRegister = findViewById(R.id.login_tv_register)
+        tvAlert = findViewById(R.id.login_tv_alert)
 
-        oneTapClient = Identity.getSignInClient(this)
-        signInRequest = BeginSignInRequest.builder().setGoogleIdTokenRequestOptions(
-            BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                .setSupported(true)
-                .setServerClientId(getString(R.string.CLIENT_ID))
-                .setFilterByAuthorizedAccounts(false)
+//        oneTapClient = Identity.getSignInClient(this)
+//        signInRequest = BeginSignInRequest.builder().setGoogleIdTokenRequestOptions(
+//            BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+//                .setSupported(true)
+//                .setServerClientId(getString(R.string.CLIENT_ID))
+//                .setFilterByAuthorizedAccounts(false)
+//
+//                .build()
+//        ).build()
 
-                .build()
-        ).build()
+
 
         btnLogin.setOnClickListener{
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
             loginWithEmailPassword(email,password)
         }
 
@@ -85,8 +94,7 @@ class Login : AppCompatActivity() {
                             val firebaseCredential = GoogleAuthProvider.getCredential(idToken,null)
                             auth.signInWithCredential(firebaseCredential).addOnCompleteListener{
                                 if(it.isSuccessful){
-                                    val intent = Intent(this,LeaderBoard::class.java)
-                                    startActivity(intent)
+                                    //do something
                                 }else {
                                     Toast.makeText(this,"Gagal autentikasi dengan google",Toast.LENGTH_LONG).show()
                                 }
@@ -110,11 +118,14 @@ class Login : AppCompatActivity() {
     private fun loginWithEmailPassword(email: String, password: String){
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){
             if(it.isSuccessful){
+                val userUid = currentUser?.uid
                 //move to homepage
-                startActivity(Intent(this,HalamanHome::class.java))
+                startActivity(Intent(this,MainActivity::class.java))
             }else {
                 Toast.makeText(this,"sign in failed",Toast.LENGTH_SHORT).show()
             }
+        }.addOnFailureListener{
+            tvAlert.text = "Email atau Password salah"
         }
 
     }
@@ -135,6 +146,7 @@ class Login : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        currentUser = auth.currentUser
         if(currentUser != null){
             startActivity(Intent(this,MainActivity::class.java))
         }

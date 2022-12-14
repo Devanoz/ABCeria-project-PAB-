@@ -11,11 +11,13 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.abceria.Activity.auth.Auth
+import com.example.abceria.Activity.auth.Login
 import com.example.abceria.MainActivity
 import com.example.abceria.R
 import com.example.abceria.db.DB
 import com.example.abceria.model.user.User
 import com.example.abceria.state.StateFactory
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.SetOptions
 import java.lang.Thread.State
 import java.util.*
@@ -25,7 +27,7 @@ class editProfile : AppCompatActivity() {
 
     private val firestore = DB.getFirestoreInstance()
     private val auth = Auth.getAuthInstance()
-    private val currentUser = auth.currentUser
+    private var currentUser: FirebaseUser? = null
     private val firebaseStorage = DB.getStorageInstance()
     //components
     private lateinit var etFullName: EditText
@@ -87,14 +89,10 @@ class editProfile : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        setProfileImage()
-    }
 
     private fun getProfileData(){
-        if(currentUser != null){
-            val userUid = currentUser.uid
+        if(auth.currentUser != null){
+            val userUid = auth.currentUser!!.uid
             firestore.collection("user").document(userUid).get().addOnCompleteListener{ Task ->
                 Task.addOnSuccessListener { docSnapShot ->
                     val user = docSnapShot.toObject(User::class.java)
@@ -116,7 +114,7 @@ class editProfile : AppCompatActivity() {
     private fun saveDataToUpdate(){
 
         if(currentUser !== null){
-            val userUid = currentUser.uid
+            val userUid = currentUser!!.uid
 
             val usernameToUpdate = etUsername.text.toString()
             val fullNameToUpdate = etFullName.text.toString()
@@ -149,7 +147,6 @@ class editProfile : AppCompatActivity() {
     }
 
 
-
     private fun initComponents(){
         etFullName = findViewById(R.id.edit_profile_et_fullName)
         etUsername = findViewById(R.id.edit_profile_et_username)
@@ -157,4 +154,20 @@ class editProfile : AppCompatActivity() {
         imvProfile = findViewById(R.id.edit_profile_imv_profileImage)
         btnSave = findViewById(R.id.edit_profile_btn_save)
     }
+    override fun onResume() {
+        super.onResume()
+        if(currentUser == null){
+            startActivity(Intent(this,Login::class.java))
+        }
+        setProfileImage()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        currentUser = auth.currentUser
+        if(auth.currentUser == null){
+            startActivity(Intent(this,Login::class.java))
+        }
+    }
+
 }

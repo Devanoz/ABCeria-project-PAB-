@@ -13,11 +13,12 @@ import android.widget.Toast
 import com.example.abceria.R
 import com.example.abceria.db.DB
 import com.example.abceria.model.user.User
+import com.google.firebase.auth.FirebaseUser
 
 class Register : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
     private val fireStore = DB.getFirestoreInstance()
-    private val user = auth.currentUser
+    private var currentUser: FirebaseUser? = null
 
     private lateinit var btnRegister : Button
     private lateinit var pbRegister: ProgressBar
@@ -79,6 +80,12 @@ class Register : AppCompatActivity() {
         etPassword = findViewById(R.id.register_et_password)
         etConfirmPassword = findViewById(R.id.register_et_confirm_password)
         tvAlert = findViewById(R.id.register_et_alert)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        currentUser = auth.currentUser
+
     }
 
 }
