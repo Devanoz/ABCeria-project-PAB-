@@ -51,7 +51,7 @@ class Login : AppCompatActivity() {
         etPassword = findViewById(R.id.login_et_password)
         btnLogin = findViewById(R.id.login_btn_login)
         tvRegister = findViewById(R.id.login_tv_register)
-        tvAlert = findViewById(R.id.login_tv_alert)
+
 
 //        oneTapClient = Identity.getSignInClient(this)
 //        signInRequest = BeginSignInRequest.builder().setGoogleIdTokenRequestOptions(
