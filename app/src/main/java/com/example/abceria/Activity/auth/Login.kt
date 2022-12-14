@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.abceria.Activity.home.HalamanHome
 import com.example.abceria.MainActivity
 import com.example.abceria.R
 import com.example.abceria.db.DB
@@ -18,6 +17,7 @@ import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 
@@ -26,7 +26,7 @@ class Login : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
     private val fireStore = DB.getFirestoreInstance()
 
-    private val currentUser = auth.currentUser
+    private var currentUser: FirebaseUser? = null
 
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
@@ -143,6 +143,7 @@ class Login : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        currentUser = auth.currentUser
         if(currentUser != null){
             startActivity(Intent(this,MainActivity::class.java))
         }
