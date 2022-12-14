@@ -74,7 +74,7 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="17dp"
-                            android:background="@color/transparant"
+                            android:background="@drawable/transparant"
                             android:text="Modul 1">
                         </Button>
                     </LinearLayout>
@@ -108,7 +108,7 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="17dp"
-                            android:background="@color/transparant" />
+                            android:background="@drawable/transparant" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <!--row 2 col 1-->
@@ -139,7 +139,7 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="17dp"
-                            android:background="@color/transparant" />
+                            android:background="@drawable/transparant" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <!--row 2 col 2-->
@@ -170,7 +170,7 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="17dp"
-                            android:background="@color/transparant" />
+                            android:background="@drawable/transparant" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <!--row 3 col 1-->
@@ -201,7 +201,7 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="17dp"
-                            android:background="@color/transparant" />
+                            android:background="@drawable/transparant" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <!--row 3 col 2-->
@@ -232,7 +232,7 @@
                             android:textColor="@color/black"
                             android:textStyle="bold"
                             android:textSize="17dp"
-                            android:background="@color/transparant" />
+                            android:background="@drawable/transparant" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

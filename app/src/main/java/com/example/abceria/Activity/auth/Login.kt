@@ -9,11 +9,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.abceria.MainActivity
+import com.example.abceria.Activity.home.HalamanHome
+import com.example.abceria.Activity.leaderboard.LeaderBoard
 import com.example.abceria.R
 import com.example.abceria.db.DB
-import com.example.abceria.state.StateFactory
+import com.example.abceria.model.user.User
+import com.example.abceria.state.UserState
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
+import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
