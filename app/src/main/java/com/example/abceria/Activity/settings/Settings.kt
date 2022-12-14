@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,12 +17,13 @@ import com.example.abceria.db.DB
 import com.example.abceria.model.user.User
 import com.example.abceria.state.StateFactory
 import com.example.abceria.state.UserState
+import com.google.firebase.auth.FirebaseUser
 
 class Settings : AppCompatActivity() {
 
     private val auth = Auth.getAuthInstance()
     private lateinit var btnLogout: Button
-    private val currentUser = auth.currentUser
+    private var currentUser: FirebaseUser? = null
     private val firestore = DB.getFirestoreInstance()
     private val firebaseStorage = DB.getStorageInstance()
     //components
@@ -86,17 +88,16 @@ class Settings : AppCompatActivity() {
         tvEmail.text = userState.email
     }
 
-    override fun onResume() {
-        super.onResume()
-        setProfileDetail()
-        setProfileImage()
-    }
+
 
     override fun onStart() {
         super.onStart()
-        if(currentUser == null){
-            startActivity(Intent(this,Login::class.java))
-        }
+        currentUser = auth.currentUser
+       if(auth.currentUser == null){
+           startActivity(Intent(this,Login::class.java))
+       }
+        setProfileDetail()
+        setProfileImage()
     }
 
 }

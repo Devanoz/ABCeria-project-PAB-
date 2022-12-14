@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.abceria.Activity.auth.Auth
+import com.example.abceria.Activity.auth.Login
 import com.example.abceria.Activity.settings.Settings
 import com.example.abceria.R
 import com.example.abceria.db.DB
@@ -71,6 +72,13 @@ class HalamanHome : AppCompatActivity() {
 //            imvProfile.setImageBitmap(userState.profilePicture)
 //        }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(currentUser == null){
+            startActivity(Intent(this,Login::class.java))
+        }
     }
 
 
