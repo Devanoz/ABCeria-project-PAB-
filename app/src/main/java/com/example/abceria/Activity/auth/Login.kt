@@ -20,8 +20,6 @@ import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
-
-
 class Login : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
     private val fireStore = DB.getFirestoreInstance()
@@ -39,6 +37,7 @@ class Login : AppCompatActivity() {
 
     private val REQ_ONE_TAP = 2
     private var showOneTapUi = true
+
 
     //user state
     private val userState = StateFactory.getUserStateInstance()
@@ -124,8 +123,8 @@ class Login : AppCompatActivity() {
         }.addOnFailureListener{
             tvAlert.text = "Email atau Password salah"
         }
-
     }
+
 
     fun loginWithGoogle(){
         oneTapClient.beginSignIn(signInRequest).addOnSuccessListener {
@@ -146,6 +145,7 @@ class Login : AppCompatActivity() {
         currentUser = auth.currentUser
         if(currentUser != null){
             startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
     }
 

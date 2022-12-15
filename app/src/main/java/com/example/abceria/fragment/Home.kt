@@ -3,6 +3,7 @@ package com.example.abceria.fragment
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.settings.Settings
 import com.example.abceria.R
 import com.example.abceria.db.DB
+import com.example.abceria.model.Modul
 import com.example.abceria.model.user.User
 import com.example.abceria.state.StateFactory
 
@@ -41,7 +43,6 @@ class Home : Fragment() {
         setProfileImage()
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,25 +52,29 @@ class Home : Fragment() {
     }
 
     private fun setProfileUsername(){
-        val userNameRef = fireStore.collection("user").document(currentUser!!.uid);
-        userNameRef.addSnapshotListener{ snapshot, e ->
-            if (e != null) {
-                //
-                return@addSnapshotListener
-            }
+        Log.d("profile-username",userState.username)
+        if(userState.username == null || userState.username.isEmpty()){
+            val userNameRef = fireStore.collection("user").document(currentUser!!.uid);
+            userNameRef.addSnapshotListener{ snapshot, e ->
+                if (e != null) {
+                    //
+                    return@addSnapshotListener
+                }
 
-            if (snapshot != null && snapshot.exists()) {
-                val user = snapshot.toObject(User::class.java)
-                userState.username = user?.username
-                userState.fullName = user?.fullName
-                userState.email = currentUser.email
+                if (snapshot != null && snapshot.exists()) {
+                    val user = snapshot.toObject(User::class.java)
+                    userState.username = user?.username
+                    userState.fullName = user?.fullName
+                    userState.email = currentUser.email
 //                tvUsername.text = userState.username
-                tvUsername.text = user?.username
-            } else {
-                //current data null
+                    tvUsername.text = user?.username
+                } else {
+                    //current data null
+                }
             }
+        }else{
+            tvUsername.text = userState?.username
         }
-
     }
 
     private fun setProfileImage(){
@@ -83,11 +88,10 @@ class Home : Fragment() {
         }else{
             imvProfile.setImageBitmap(userState.profilePicture)
         }
-
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         setProfileImage()
     }
 }
