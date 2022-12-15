@@ -9,6 +9,8 @@ import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
 import com.example.abceria.fragment.Home
 import com.example.abceria.fragment.Leaderboard
+import com.example.abceria.fragment.ListMateri
+import com.example.abceria.fragment.ListModul
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseUser
 
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                     //not yet implemented
                     toolbar.title = "Materi"
                     supportActionBar?.title = "Materi"
+                    selectedFragment = ListModul()
                     true
                 }
                 R.id.kuis_icon -> {
