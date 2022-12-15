@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
     <item
-        android:title="Materi"
+        android:title="Modul"
         android:id="@+id/materi_icon"
         android:icon="@drawable/ic_baseline_book_24"/>
     <item android:title="Leaderboard"
