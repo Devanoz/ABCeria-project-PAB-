@@ -6,11 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activity.home.HalamanHome">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp">
 
         <FrameLayout
             android:id="@+id/frame_layout"
@@ -33,7 +34,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -68,58 +68,7 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-
-<!--                <Button-->
-<!--                    android:id="@+id/notifikasi"-->
-<!--                    android:layout_width="50dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:layout_marginRight="5dp"-->
-<!--                    android:background="@drawable/ic_baseline_notifications_none_24"-->
-<!--                    tools:ignore="SpeakableTextPresentCheck" />-->
-
-<!--                <Button-->
-<!--                    android:id="@+id/home_btn_icon_burger"-->
-<!--                    android:layout_width="48dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:background="@drawable/ic_baseline_menu_24"-->
-<!--                    tools:ignore="SpeakableTextPresentCheck" />-->
-
             </LinearLayout>
-
-            <SearchView
-                android:id="@+id/cari"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="#43395144"
-                android:clickable="true"
-                android:inputType="textShortMessage|textLongMessage|number" />
-
-            <ImageView
-                android:id="@+id/carousel1"
-                android:layout_width="370dp"
-                android:layout_height="240dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                app:srcCompat="@drawable/carousel1" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Yuk kita belajar!"
-                android:textColor="#000000"
-                android:textSize="21sp"
-                android:textStyle="bold" />
 
             <!--            <androidx.cardview.widget.CardView-->
             <!--                android:id="@+id/hlmHuruf"-->
@@ -286,62 +235,73 @@
             <!--                </LinearLayout>-->
             <!--            </androidx.cardview.widget.CardView>-->
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/hlmHewan"
-                android:layout_width="match_parent"
-                android:layout_height="125dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="75dp"
-                app:cardBackgroundColor="#A3CD39"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="20dp">
+        </LinearLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true">
+
+                <SearchView
+                    android:id="@+id/cari"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:inputType="textShortMessage|textLongMessage|number"
+                    android:queryHint="cari di sini">
+                </SearchView>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/imageHewan"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/hewan" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="Ada hewan apa saja ya?"
-                            android:textColor="#000000"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/textView10"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/poppins"
-                            android:text="Wah, banyak sekali hewan baru yang kukenal!"
-                            android:textColor="#000000" />
-                    </LinearLayout>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <ImageView
+                android:id="@+id/carousel1"
+                android:layout_width="370dp"
+                android:layout_height="343dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                app:srcCompat="@drawable/carousel_1" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Yuk kita belajar!"
+                android:textColor="#000000"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
