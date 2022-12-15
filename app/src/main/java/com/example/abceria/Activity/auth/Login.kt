@@ -20,8 +20,6 @@ import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
-
-
 class Login : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
     private val fireStore = DB.getFirestoreInstance()
