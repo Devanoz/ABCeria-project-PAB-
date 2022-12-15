@@ -39,23 +39,28 @@ class MainActivity : AppCompatActivity() {
             var selectedFragment: Fragment? = null
             when (it.itemId) {
                 R.id.leaderboard_icon -> {
+                    toolbar.title = "Leaderboard"
                     selectedFragment = Leaderboard()
                     true
                 }
                 R.id.home_icon -> {
+                    toolbar.title = "Home"
                     selectedFragment = Home()
                     true
                 }
                 R.id.materi_icon -> {
                     //not yet implemented
+                    toolbar.title = "Materi"
                     supportActionBar?.title = "Materi"
                     true
                 }
                 R.id.kuis_icon -> {
+                    toolbar.title = "Kuis"
                     supportActionBar?.title = "Kuis"
                     true
                 }
                 R.id.profil_icon -> {
+                    toolbar.title = "Profile"
                     supportActionBar?.title = "Kuis"
                     true
                 }
