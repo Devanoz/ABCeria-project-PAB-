@@ -38,6 +38,7 @@ class Login : AppCompatActivity() {
     private val REQ_ONE_TAP = 2
     private var showOneTapUi = true
 
+
     //user state
     private val userState = StateFactory.getUserStateInstance()
 
@@ -123,6 +124,7 @@ class Login : AppCompatActivity() {
             tvAlert.text = "Email atau Password salah"
         }
     }
+
 
     fun loginWithGoogle(){
         oneTapClient.beginSignIn(signInRequest).addOnSuccessListener {
