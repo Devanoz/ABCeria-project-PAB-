@@ -124,7 +124,6 @@ class Login : AppCompatActivity() {
         }.addOnFailureListener{
             tvAlert.text = "Email atau Password salah"
         }
-
     }
 
     fun loginWithGoogle(){
@@ -146,6 +145,7 @@ class Login : AppCompatActivity() {
         currentUser = auth.currentUser
         if(currentUser != null){
             startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
     }
 

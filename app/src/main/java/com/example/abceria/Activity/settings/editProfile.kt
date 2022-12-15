@@ -61,6 +61,7 @@ class editProfile : AppCompatActivity() {
         btnSave.setOnClickListener {
             saveDataToUpdate()
             saveProfileImage()
+            userState.profilePicture = null
         }
         getProfileData()
         setProfileImage()
@@ -78,7 +79,7 @@ class editProfile : AppCompatActivity() {
         user.profilePicture =  "/profile-image/${fileName}"
         user.score = 18
         firestore.collection("user").document(currentUser?.uid!!).update("profilePicture",user.profilePicture).addOnSuccessListener {
-            userState.profileImageUri = "/profile-image${fileName}"
+            userState.profileImageUri = "/profile-image/${fileName}"
         }.addOnFailureListener {
             Toast.makeText(this,"gagal update gambar",Toast.LENGTH_SHORT).show()
         }
