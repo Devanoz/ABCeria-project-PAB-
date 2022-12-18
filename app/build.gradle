@@ -54,4 +54,6 @@ dependencies {
     //auth
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    //pdfreader
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
 }

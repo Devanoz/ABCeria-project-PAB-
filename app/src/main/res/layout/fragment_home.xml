@@ -14,7 +14,6 @@
         android:layout_height="100dp">
 
         <FrameLayout
-            android:id="@+id/frame_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -90,9 +89,7 @@
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardUseCompatPadding="true">
-
                 <SearchView
-                    android:id="@+id/cari"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -113,7 +110,6 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/carousel1"
                 android:layout_width="370dp"
                 android:layout_height="343dp"
                 android:layout_gravity="center"
@@ -123,7 +119,6 @@
                 app:srcCompat="@drawable/carousel_1" />
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -134,7 +129,6 @@
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_home"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

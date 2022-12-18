@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.quiz.QuizDetail">
+
+    <TextView
+        android:id="@+id/quiz_detail_tv_question_position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pertanyaan ke"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/quiz_detail_tv_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:text="point" />
+
+    <ImageView
+        android:id="@+id/quiz_detail_imv_question"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/quiz_detail_tv_question_position"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="33dp"
+        android:src="@drawable/_3037994_2_10_removebg_preview" />
+
+    <TextView
+        android:id="@+id/quiz_detail_tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quiz_detail_imv_question"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="19dp"
+        android:text=""
+        android:gravity="center"
+        />
+
+    <RelativeLayout
+        android:layout_width="391dp"
+        android:layout_height="259dp"
+        android:layout_below="@id/quiz_detail_tv_question"
+        android:layout_marginHorizontal="20dp">
+
+        <Button
+            android:id="@+id/btn_option_A"
+            android:layout_width="301dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="29dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btn_option_B"
+            android:layout_width="301dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="29dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btn_option_C"
+            android:layout_width="301dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="134dp"
+            android:layout_marginEnd="31dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btn_option_D"
+            android:layout_width="301dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="199dp"
+            android:layout_marginEnd="30dp"
+            android:text="" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/quize_detail_btn_right"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="44dp"
+        android:text="Selanjutnya" />
+
+    <Button
+        android:id="@+id/quiz_detail_btn_left"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginBottom="44dp"
+        android:text="Sebelumnya" />
+
+</RelativeLayout>

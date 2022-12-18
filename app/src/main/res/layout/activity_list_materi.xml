@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradasihijau"
-    tools:context=".ModulMateri.ListMateri">
+    tools:context=".Activity.ModulMateri.ListMateri">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,10 +15,10 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:paddingLeft="15dp"
-            android:text="Modul 1"
+            android:text="List Materi"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="40sp"
@@ -30,6 +30,7 @@
             android:layout_height="match_parent"
 
             />
+
 
     </LinearLayout>
 

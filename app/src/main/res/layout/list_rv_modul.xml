@@ -11,7 +11,7 @@
     >
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/list_modul_cv_modul"
         android:layout_width="150dp"
         android:layout_height="160dp"
         app:cardCornerRadius="20dp"
@@ -26,7 +26,6 @@
             >
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/list_imgView_modul"
                 app:cardCornerRadius="5dp"
                 android:layout_width="140dp"
                 android:layout_height="90dp"
@@ -42,7 +41,7 @@
 
         </RelativeLayout>
         <TextView
-            android:id="@+id/list_tv_modul"
+            android:id="@+id/list_modul_tv_modul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
