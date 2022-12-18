@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModulMateri.DetailModul"
+    tools:context=".Activity.ModulMateri.DetailModul"
     android:background="@drawable/gradasihijau">
 
 
@@ -35,16 +35,17 @@
                 android:rowCount="3"
                 >
 
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="17dp"
+                    android:layout_row="0"
+                    android:layout_column="2"
                     android:background="@drawable/materi_menu"
                     android:text="Modul 1"
-                    />
-
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"

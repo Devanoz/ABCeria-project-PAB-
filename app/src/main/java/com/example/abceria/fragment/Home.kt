@@ -14,7 +14,6 @@ import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.settings.Settings
 import com.example.abceria.R
 import com.example.abceria.db.DB
-import com.example.abceria.model.Modul
 import com.example.abceria.model.user.User
 import com.example.abceria.state.StateFactory
 
