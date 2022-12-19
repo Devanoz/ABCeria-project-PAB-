@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-    <item
-        android:title="Modul"
-        android:id="@+id/materi_icon"
-        android:icon="@drawable/ic_baseline_book_24"/>
-    <item android:title="Leaderboard"
-        android:id="@+id/leaderboard_icon"
-        android:icon="@drawable/ic_baseline_leaderboard_24"/>
     <item android:title="Home"
         android:id="@+id/home_icon"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_baseline_home_24"
+        app:cnb_iconColor="#DC0F0F"/>
+    <item
+        android:title="Belajar"
+        android:id="@+id/materi_icon"
+        android:icon="@drawable/ic_baseline_book_24"
+        app:cnb_iconColor="#F6E337"/>
+    <item android:title="Leaderboard"
+        android:id="@+id/leaderboard_icon"
+        android:icon="@drawable/ic_baseline_leaderboard_24"
+        app:cnb_iconColor="#2D5DD5"/>
     <item android:title="Kuis"
         android:id="@+id/kuis_icon"
         android:icon="@drawable/ic_baseline_wysiwyg_24"/>
-    <item android:title="Profil"
-        android:id="@+id/profil_icon"
-        android:icon="@drawable/ic_baseline_person_24"/>
+
 </menu>
+

@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.abceria"
-        minSdk 21
+        minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -54,4 +54,6 @@ dependencies {
     //auth
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    implementation 'com.mikhaellopez:circularimageview:4.3.1'
+    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
 }
