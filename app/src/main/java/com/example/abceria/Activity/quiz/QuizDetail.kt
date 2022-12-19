@@ -8,7 +8,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
 import com.example.abceria.Activity.ModulMateri.QuizResult
+import com.example.abceria.Activity.quiz.dialog.EndQuizDialog
 import com.example.abceria.R
 import com.example.abceria.db.DB
 import com.example.abceria.model.quiz.Question
@@ -31,6 +33,7 @@ class QuizDetail : AppCompatActivity() {
 
     private val questions: ArrayList<Question> = ArrayList()
     private lateinit var answerState: Array<String>
+    private lateinit var optionState: Array<String>
     private lateinit var questionDetail: TextView
 
     companion object{
@@ -68,15 +71,12 @@ class QuizDetail : AppCompatActivity() {
     private fun quizActionListener(){
         rightNavigationButton.setOnClickListener {
             if(isFinish){
-//                val answer = answerState
-//                val questions = questions
+                val answer = answerState
+                val questions = questions
+                val options = optionState
+
                 val quizResult:com.example.abceria.model.quiz.QuizResult = processAnswer()
-                val intent = Intent(this,QuizResult::class.java)
-                //for put extra
-                intent.putExtra("answer",quizResult)
-//                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(intent)
-                finish()
+                EndQuizDialog(quizResult,this).show(this.supportFragmentManager, EndQuizDialog.TAG)
             }
             resetButtonCheck()
             if((questionIndex+1) <= (questions.size-1)){
@@ -90,6 +90,12 @@ class QuizDetail : AppCompatActivity() {
                 btnOptionC.text = question.optionC
                 btnOptionD.text = question.optionD
 
+            }
+            when(optionState[questionIndex]){
+                com.example.abceria.utility.Question.OPTION_A -> checkButtonA()
+                com.example.abceria.utility.Question.OPTION_B -> checkButtonB()
+                com.example.abceria.utility.Question.OPTION_C -> checkButtonC()
+                com.example.abceria.utility.Question.OPTION_D -> checkButtonD()
             }
             //check if last question button text set to finish
             if(questionIndex == (questions.size-1) ){
@@ -112,6 +118,12 @@ class QuizDetail : AppCompatActivity() {
                 btnOptionB.text = question.optionB
                 btnOptionC.text = question.optionC
                 btnOptionD.text = question.optionD
+            }
+            when(optionState[questionIndex]){
+                com.example.abceria.utility.Question.OPTION_A -> checkButtonA()
+                com.example.abceria.utility.Question.OPTION_B -> checkButtonB()
+                com.example.abceria.utility.Question.OPTION_C -> checkButtonC()
+                com.example.abceria.utility.Question.OPTION_D -> checkButtonD()
             }
             //check if last question button text set to finish
             if(questionIndex == (questions.size-1) ){
@@ -142,7 +154,9 @@ class QuizDetail : AppCompatActivity() {
 
             }.continueWith{
                 answerState = Array(questions.size) { "" }
+                optionState = Array(questions.size) { "" }
                 Log.d("answerstateSize", answerState.size.toString())
+                Log.d("optionsStateSize",optionState.size.toString())
             }.continueWith{
                 val question = questions[questionIndex]
                 tvQuizPoint.text = "${question.point} point"
@@ -179,48 +193,16 @@ class QuizDetail : AppCompatActivity() {
 
     private fun setButtonOptionListener(){
         btnOptionA.setOnClickListener {
-            it.setBackgroundColor(Color.GRAY)
-            it.isEnabled = false
-            btnOptionB.setBackgroundColor(Color.WHITE)
-            btnOptionC.setBackgroundColor(Color.WHITE)
-            btnOptionD.setBackgroundColor(Color.WHITE)
-            btnOptionB.isEnabled = true
-            btnOptionC.isEnabled = true
-            btnOptionD.isEnabled = true
-            answerState[questionIndex] = questions[questionIndex].optionA
+           checkButtonA()
         }
         btnOptionB.setOnClickListener {
-            it.setBackgroundColor(Color.GRAY)
-            it.isEnabled = false
-            btnOptionA.setBackgroundColor(Color.WHITE)
-            btnOptionC.setBackgroundColor(Color.WHITE)
-            btnOptionD.setBackgroundColor(Color.WHITE)
-            btnOptionA.isEnabled = true
-            btnOptionC.isEnabled = true
-            btnOptionD.isEnabled = true
-            answerState[questionIndex] = questions[questionIndex].optionB
+            checkButtonB()
         }
         btnOptionC.setOnClickListener {
-            it.setBackgroundColor(Color.GRAY)
-            it.isEnabled = false
-            btnOptionA.setBackgroundColor(Color.WHITE)
-            btnOptionB.setBackgroundColor(Color.WHITE)
-            btnOptionD.setBackgroundColor(Color.WHITE)
-            btnOptionA.isEnabled = true
-            btnOptionB.isEnabled = true
-            btnOptionD.isEnabled = true
-            answerState[questionIndex] = questions[questionIndex].optionC
+            checkButtonC()
         }
         btnOptionD.setOnClickListener {
-            it.setBackgroundColor(Color.GRAY)
-            it.isEnabled = false
-            btnOptionA.setBackgroundColor(Color.WHITE)
-            btnOptionB.setBackgroundColor(Color.WHITE)
-            btnOptionC.setBackgroundColor(Color.WHITE)
-            btnOptionA.isEnabled = true
-            btnOptionB.isEnabled = true
-            btnOptionC.isEnabled = true
-            answerState[questionIndex] = questions[questionIndex].optionD
+            checkButtonD()
         }
     }
     private fun resetButtonCheck(){
@@ -232,6 +214,54 @@ class QuizDetail : AppCompatActivity() {
         btnOptionB.isEnabled = true
         btnOptionC.isEnabled = true
         btnOptionD.isEnabled = true
+    }
+    private fun checkButtonA(){
+        btnOptionA.setBackgroundColor(Color.GRAY)
+        btnOptionA.isEnabled = false
+        btnOptionB.setBackgroundColor(Color.WHITE)
+        btnOptionC.setBackgroundColor(Color.WHITE)
+        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionB.isEnabled = true
+        btnOptionC.isEnabled = true
+        btnOptionD.isEnabled = true
+        answerState[questionIndex] = questions[questionIndex].optionA
+        optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_A
+    }
+    private fun checkButtonB(){
+        btnOptionB.setBackgroundColor(Color.GRAY)
+        btnOptionB.isEnabled = false
+        btnOptionA.setBackgroundColor(Color.WHITE)
+        btnOptionC.setBackgroundColor(Color.WHITE)
+        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionA.isEnabled = true
+        btnOptionC.isEnabled = true
+        btnOptionD.isEnabled = true
+        answerState[questionIndex] = questions[questionIndex].optionB
+        optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_B
+    }
+    private fun checkButtonC(){
+        btnOptionC.setBackgroundColor(Color.GRAY)
+        btnOptionC.isEnabled = false
+        btnOptionA.setBackgroundColor(Color.WHITE)
+        btnOptionB.setBackgroundColor(Color.WHITE)
+        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionA.isEnabled = true
+        btnOptionB.isEnabled = true
+        btnOptionD.isEnabled = true
+        answerState[questionIndex] = questions[questionIndex].optionC
+        optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_C
+    }
+    private fun checkButtonD(){
+        btnOptionD.setBackgroundColor(Color.GRAY)
+        btnOptionD.isEnabled = false
+        btnOptionA.setBackgroundColor(Color.WHITE)
+        btnOptionB.setBackgroundColor(Color.WHITE)
+        btnOptionC.setBackgroundColor(Color.WHITE)
+        btnOptionA.isEnabled = true
+        btnOptionB.isEnabled = true
+        btnOptionC.isEnabled = true
+        answerState[questionIndex] = questions[questionIndex].optionD
+        optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_D
     }
 
 
