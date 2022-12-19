@@ -23,7 +23,6 @@ import com.google.firebase.auth.GoogleAuthProvider
 class Login : AppCompatActivity() {
     private val auth = Auth.getAuthInstance()
     private val fireStore = DB.getFirestoreInstance()
-
     private var currentUser: FirebaseUser? = null
 
     private lateinit var etEmail: EditText
@@ -37,7 +36,6 @@ class Login : AppCompatActivity() {
 
     private val REQ_ONE_TAP = 2
     private var showOneTapUi = true
-
 
     //user state
     private val userState = StateFactory.getUserStateInstance()
@@ -74,7 +72,6 @@ class Login : AppCompatActivity() {
             val intent = Intent(this,Register::class.java)
             this.startActivity(intent)
         }
-
 
     }
 
