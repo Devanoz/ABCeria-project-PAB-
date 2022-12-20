@@ -12,7 +12,6 @@ import com.example.abceria.utility.IntentModulUtils
 
 class ListQuiz : AppCompatActivity() {
     private lateinit var rvQuiz : RecyclerView
-    private lateinit var listQuizAdapter: ListQuizAdapter
     private val quizList = arrayListOf<Quiz>()
 
     private val firestore = DB.getFirestoreInstance()
