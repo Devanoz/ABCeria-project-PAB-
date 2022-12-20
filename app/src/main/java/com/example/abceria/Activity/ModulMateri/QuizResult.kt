@@ -33,8 +33,8 @@ class QuizResult : AppCompatActivity() {
     }
     private fun setQuizDataResult(quizResult: QuizResult) {
         tvQuizPoint.text = quizResult.point.toString()
-        tvRightAnswer.text = quizResult.rightAnswer.toString()
-        tvWrongAnswer.text = quizResult.wrongAnswer.toString()
+        tvRightAnswer.text = quizResult.rightAnswer.toString()+ " soal"
+        tvWrongAnswer.text = quizResult.wrongAnswer.toString()+ " soal"
     }
 
     private fun updateUserScore(userId: String,point: Long) {
