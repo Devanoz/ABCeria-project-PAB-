@@ -12,7 +12,6 @@ import com.example.abceria.utility.IntentModulUtils
 
 class ModulDetail : AppCompatActivity() {
     private lateinit var modulTitle: TextView
-
     private lateinit var materiCard : CardView
     private lateinit var quizCard : CardView
 

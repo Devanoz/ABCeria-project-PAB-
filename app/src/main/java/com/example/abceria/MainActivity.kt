@@ -55,11 +55,6 @@ class MainActivity : AppCompatActivity() {
                     selectedFragment = ListModul()
                     true
                 }
-                R.id.kuis_icon -> {
-                    toolbar.title = "Kuis"
-                    supportActionBar?.title = "Kuis"
-                    true
-                }
                 R.id.profil_icon -> {
                     toolbar.title = "Profile"
                     supportActionBar?.title = "Kuis"
