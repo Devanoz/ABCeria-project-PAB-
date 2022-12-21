@@ -1,22 +1,33 @@
 package com.example.abceria.adapter
 
+
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.abceria.Activity.ModulMateri.modul.ModulDetail
 import com.example.abceria.R
-import com.example.abceria.model.materi.Materi
 import com.example.abceria.model.modul.Modul
-import com.example.abceria.model.user.User
+import com.example.abceria.utility.IntentModulUtils
 
-class ListModulAdapter(private val dataSet: java.util.ArrayList<Modul>):
+class ListModulAdapter(private val dataSet: java.util.ArrayList<Modul>,val context: Context?):
     RecyclerView.Adapter<ListModulAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         fun bind(modul: Modul){
-            val tvNamaModul : TextView = itemView.findViewById(R.id.list_tv_modul)
+            val tvNamaModul : TextView = itemView.findViewById(R.id.list_modul_tv_modul)
+            val cvModul : CardView = itemView.findViewById(R.id.list_modul_cv_modul)
             //bakal ditambahin desc modul kalau fragmen detail modul nya udah ada
             tvNamaModul.text = modul.title
+            cvModul.setOnClickListener{
+               val intent = Intent(context, ModulDetail::class.java)
+                intent.putExtra(IntentModulUtils.MODUL_ID,modul.id)
+                intent.putExtra(IntentModulUtils.MODUL_TITLE,modul.title)
+                context?.startActivity(intent)
+            }
             //bakal ditambahin desc modul kalau fragmen detail modul nya udah ada
 
         }

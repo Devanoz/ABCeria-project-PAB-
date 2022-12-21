@@ -10,13 +10,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.settings.Settings
 import com.example.abceria.R
+import com.example.abceria.adapter.LanguageAdapter
+import com.example.abceria.adapter.ListModulAdapter
 import com.example.abceria.db.DB
-import com.example.abceria.model.Modul
+import com.example.abceria.model.modul.Modul
 import com.example.abceria.model.user.User
 import com.example.abceria.state.StateFactory
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Home : Fragment() {
 
@@ -30,8 +38,21 @@ class Home : Fragment() {
     //userState
     private val userState = StateFactory.getUserStateInstance()
 
+    //recyclerview
+    private lateinit var rvListModul: RecyclerView
+    private lateinit var listModulAdapter: ListModulAdapter
+    private val modulList:ArrayList<Modul> = ArrayList()
+
+    //search
+    private lateinit var searchView: SearchView
+    private var dataSet = ArrayList<Modul>()
+    private lateinit var adapter: LanguageAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        searchView = view.findViewById(R.id.searchView)
+        adapter = LanguageAdapter(dataSet, context)
+
         tvUsername = view.findViewById(R.id.home_tv_username)
         imvProfile = view.findViewById(R.id.home_imv_profile)
         setProfileUsername()
@@ -41,6 +62,60 @@ class Home : Fragment() {
             this.startActivity(intent)
         }
         setProfileImage()
+        initRecyclerView(view)
+        getModulList()
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+
+        })
+    }
+
+    private fun filterList(query: String?) {
+
+        if (query != null) {
+            val filteredList = java.util.ArrayList<Modul>()
+            for (i in dataSet) {
+                if (i.title.lowercase(Locale.ROOT).contains(query)) {
+                    filteredList.add(i)
+                }
+            }
+
+            if (filteredList.isEmpty()) {
+//                Toast.makeText(this, "No Data found", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "No Data found", Toast.LENGTH_SHORT).show()
+            } else {
+                adapter.setFilteredList(filteredList)
+            }
+        }
+    }
+
+    private fun getModulList() {
+        fireStore.collection("modul").get().addOnSuccessListener {
+            it.forEach{ document ->
+                val modul = Modul()
+                modul.id = document.id
+                modul.title = document.get("title").toString()
+                modul.description = document.get("descriptionn").toString()
+                modulList.add(modul)
+            }
+            listModulAdapter = ListModulAdapter(modulList,this.context)
+            rvListModul.adapter = listModulAdapter
+        }
+
+
+    }
+
+    private fun initRecyclerView(view: View){
+        rvListModul = view.findViewById(R.id.list_rv_modul_home)
+        rvListModul.layoutManager = GridLayoutManager(this.context,2)
     }
 
     override fun onCreateView(

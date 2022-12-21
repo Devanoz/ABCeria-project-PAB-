@@ -33,11 +33,12 @@ class ListModul : Fragment() {
         firestore.collection("modul").get().addOnSuccessListener {
             it.forEach{ document ->
                 val modul = Modul()
+                modul.id = document.id
                 modul.title = document.get("title").toString()
                 modul.description = document.get("descriptionn").toString()
                 modulList.add(modul)
             }
-            listModulAdapter = ListModulAdapter(modulList)
+            listModulAdapter = ListModulAdapter(modulList,this.context)
             rvListModul.adapter = listModulAdapter
         }
 

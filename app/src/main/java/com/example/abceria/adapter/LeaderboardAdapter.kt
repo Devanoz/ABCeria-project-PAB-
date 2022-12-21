@@ -14,7 +14,6 @@ import com.google.firebase.storage.FirebaseStorage
 
 class LeaderboardAdapter(private val dataSet: java.util.ArrayList<User>):
     RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>() {
-
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
         private val firebaseStorage: FirebaseStorage = DB.getStorageInstance()
 
@@ -23,7 +22,6 @@ class LeaderboardAdapter(private val dataSet: java.util.ArrayList<User>):
             val tvUsername : TextView = itemView.findViewById(R.id.leaderboard_tv_userName)
             val tvPoints: TextView = itemView.findViewById(R.id.leaderboard_tv_points)
             val imvProfile: ImageView = itemView.findViewById(R.id.leaderboard_imv_profile)
-
 
             tvFullname.text = user.fullName
             tvUsername.text = user.username

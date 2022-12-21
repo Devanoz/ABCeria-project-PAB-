@@ -1,11 +1,12 @@
 package com.example.abceria.model.quiz
 
 class Question {
-    private var imageUrl = ""
-    private var key =""
-    private var optionA = ""
-    private var optionB = ""
-    private var optionC = ""
-    private var optionD = ""
-    private var point = 0
+     var imageUrl = ""
+     var key = ""
+     var optionA = ""
+     var optionB = ""
+     var optionC = ""
+     var optionD = ""
+     var pertanyaan = ""
+     var point: Long = 0
 }

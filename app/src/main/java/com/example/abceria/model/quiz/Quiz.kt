@@ -1,5 +1,8 @@
 package com.example.abceria.model.quiz
 
 class Quiz {
-    private var title:String = ""
+     var id = ""
+     var title:String = ""
+     var description: String = ""
+     var modulId = ""
 }

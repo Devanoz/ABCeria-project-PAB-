@@ -9,7 +9,6 @@ import com.example.abceria.Activity.auth.Auth
 import com.example.abceria.Activity.auth.Login
 import com.example.abceria.fragment.Home
 import com.example.abceria.fragment.Leaderboard
-import com.example.abceria.fragment.ListMateri
 import com.example.abceria.fragment.ListModul
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseUser
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.home_action_bar)
         initComponents()
         createComponentListener()
-
     }
 
     private fun initComponents(){
@@ -52,14 +50,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.materi_icon -> {
                     //not yet implemented
-                    toolbar.title = "Materi"
+                    toolbar.title = "Modul"
                     supportActionBar?.title = "Materi"
                     selectedFragment = ListModul()
-                    true
-                }
-                R.id.kuis_icon -> {
-                    toolbar.title = "Kuis"
-                    supportActionBar?.title = "Kuis"
                     true
                 }
                 R.id.profil_icon -> {

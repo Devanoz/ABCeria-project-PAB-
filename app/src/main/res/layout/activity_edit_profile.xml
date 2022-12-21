@@ -73,7 +73,6 @@
 
 
         <EditText
-            android:id="@+id/edit_profile_et_password"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="25dp"
