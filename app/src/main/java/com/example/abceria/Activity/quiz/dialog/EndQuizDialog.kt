@@ -16,7 +16,6 @@ class EndQuizDialog(private val quizResult: com.example.abceria.model.quiz.QuizR
     companion object {
         const val TAG = "PurchaseEndQuizDialog"
     }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity.let {
             val builder = AlertDialog.Builder(it)
