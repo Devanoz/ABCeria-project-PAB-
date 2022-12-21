@@ -121,8 +121,8 @@
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/quize_detail_btn_left"
-                android:layout_width="131dp"
-                android:layout_height="wrap_content"
+                android:layout_width="134dp"
+                android:layout_height="45dp"
                 android:background="@drawable/quiz_detail_navigation"
                 android:text="Sebelumnya"
                 android:layout_marginHorizontal="10dp"
@@ -131,7 +131,7 @@
             <Button
                 android:id="@+id/quiz_detail_btn_right"
                 android:layout_width="134dp"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_below="@+id/container_option"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
