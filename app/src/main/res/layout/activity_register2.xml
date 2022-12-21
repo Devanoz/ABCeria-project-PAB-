@@ -60,30 +60,44 @@
             android:paddingLeft="15dp"
             android:textColorHint="#A6000000" />
 
-        <EditText
-            android:id="@+id/register_et_password"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/input_login_wrapper"
-            android:drawableStart="@drawable/ic_lock_20"
-            android:drawablePadding="18dp"
-            android:hint="Kata Sandi"
-            android:paddingLeft="15dp"
-            android:textColorHint="#A6000000" />
-        <EditText
-            android:id="@+id/register_et_confirm_password"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_login_wrapper"
+                android:drawableStart="@drawable/ic_lock_20"
+                android:drawablePadding="18dp"
+                android:inputType="textPassword"
+                android:hint="Kata Sandi"
+                android:paddingLeft="15dp"
+                android:textColorHint="#A6000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/input_login_wrapper"
-            android:drawableStart="@drawable/ic_account_20"
-            android:drawablePadding="18dp"
-            android:hint="Konfirmasi Kata Sandi"
-            android:paddingLeft="15dp"
-            android:textColorHint="#A6000000" />
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_et_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/input_login_wrapper"
+                android:drawableStart="@drawable/ic_account_20"
+                android:drawablePadding="18dp"
+                android:inputType="textPassword"
+                android:hint="Konfirmasi Kata Sandi"
+                android:paddingLeft="15dp"
+                android:textColorHint="#A6000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/register_et_alert"
