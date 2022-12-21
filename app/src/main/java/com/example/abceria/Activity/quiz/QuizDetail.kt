@@ -2,11 +2,14 @@ package com.example.abceria.Activity.quiz
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager
 import com.example.abceria.Activity.ModulMateri.QuizResult
@@ -20,13 +23,15 @@ import com.example.abceria.utility.IntentQuizUtils
 
 class QuizDetail : AppCompatActivity() {
     private val firestore = DB.getFirestoreInstance()
-
+    private val firebasestorage = DB.getStorageInstance()
     private lateinit var quizPosition: TextView
     private lateinit var tvQuizPoint: TextView
     private lateinit var btnOptionA : Button
     private lateinit var btnOptionB : Button
     private lateinit var btnOptionC : Button
     private lateinit var btnOptionD : Button
+
+    private lateinit var quizImage : ImageView
     //navigator
     private lateinit var leftNavigatorButton: Button
     private  lateinit var rightNavigationButton: Button
@@ -34,11 +39,13 @@ class QuizDetail : AppCompatActivity() {
     private val questions: ArrayList<Question> = ArrayList()
     private lateinit var answerState: Array<String>
     private lateinit var optionState: Array<String>
+
     private lateinit var questionDetail: TextView
 
     companion object{
         private  var questionIndex : Int = 0
         private  var isFinish = false
+        private lateinit var imageState: Array<Bitmap>
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,6 +90,7 @@ class QuizDetail : AppCompatActivity() {
                 questionIndex++
                 quizPosition.text = "Pertanyaan ke ${questionIndex+1}"
                 val question = questions[questionIndex]
+                quizImage.setImageBitmap(imageState[questionIndex])
                 tvQuizPoint.text = "${question.point} point"
                 questionDetail.text = question.pertanyaan
                 btnOptionA.text = question.optionA
@@ -112,6 +120,7 @@ class QuizDetail : AppCompatActivity() {
                 questionIndex--
                 quizPosition.text = "Pertanyaan ke ${questionIndex+1}"
                 val question = questions[questionIndex]
+                quizImage.setImageBitmap(imageState[questionIndex])
                 tvQuizPoint.text = "${question.point} point"
                 questionDetail.text = question.pertanyaan
                 btnOptionA.text = question.optionA
@@ -149,21 +158,31 @@ class QuizDetail : AppCompatActivity() {
                     question.pertanyaan = document.get("pertanyaan") as String
                     question.point = document.get("point") as Long
                     questions.add(question)
+
                 }
             }.continueWith{
                 answerState = Array(questions.size) { "" }
                 optionState = Array(questions.size) { "" }
                 Log.d("answerstateSize", answerState.size.toString())
                 Log.d("optionsStateSize",optionState.size.toString())
+                imageState = Array(questions.size){Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888)}
+                for(i in 0 until questions.size){
+                    firebasestorage.reference.child(questions[i].imageUrl).getBytes(Long.MAX_VALUE).addOnSuccessListener { it ->
+                        imageState[i] = BitmapFactory.decodeByteArray(it,0,it.size)
+                    }.continueWith {
+                        val question = questions[questionIndex]
+                        tvQuizPoint.text = "${question.point} point"
+                        quizPosition.text = "Pertanyaan ke ${questionIndex+1}"
+                        questionDetail.text = question.pertanyaan
+                        btnOptionA.text = question.optionA
+                        btnOptionB.text = question.optionB
+                        btnOptionC.text = question.optionC
+                        btnOptionD.text = question.optionD
+                        quizImage.setImageBitmap(imageState[questionIndex])
+                    }
+                }
+                
             }.continueWith{
-                val question = questions[questionIndex]
-                tvQuizPoint.text = "${question.point} point"
-                quizPosition.text = "Pertanyaan ke ${questionIndex+1}"
-                questionDetail.text = question.pertanyaan
-                btnOptionA.text = question.optionA
-                btnOptionB.text = question.optionB
-                btnOptionC.text = question.optionC
-                btnOptionD.text = question.optionD
                 quizActionListener()
             }
         }
@@ -177,6 +196,7 @@ class QuizDetail : AppCompatActivity() {
         btnOptionB = findViewById(R.id.btn_option_B)
         btnOptionC = findViewById(R.id.btn_option_C)
         btnOptionD = findViewById(R.id.btn_option_D)
+        quizImage = findViewById(R.id.quiz_detail_imv_question)
 
         //navigator
         rightNavigationButton = findViewById(R.id.quiz_detail_btn_right)
@@ -281,5 +301,9 @@ class QuizDetail : AppCompatActivity() {
         optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_D
     }
 
+    override fun onStart() {
+        super.onStart()
+
+    }
 
 }
