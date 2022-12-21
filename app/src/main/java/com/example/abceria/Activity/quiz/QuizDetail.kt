@@ -207,6 +207,10 @@ class QuizDetail : AppCompatActivity() {
         btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionA.setTextColor(Color.parseColor("#000000"))
+        btnOptionB.setTextColor(Color.parseColor("#000000"))
+        btnOptionC.setTextColor(Color.parseColor("#000000"))
+        btnOptionD.setTextColor(Color.parseColor("#000000"))
         btnOptionA.isEnabled = true
         btnOptionB.isEnabled = true
         btnOptionC.isEnabled = true
@@ -214,10 +218,14 @@ class QuizDetail : AppCompatActivity() {
     }
     private fun checkButtonA(){
         btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option_checked)
+        btnOptionA.setTextColor(Color.parseColor("#FFFFFF"))
         btnOptionA.isEnabled = false
         btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionB.setTextColor(Color.parseColor("#000000"))
+        btnOptionC.setTextColor(Color.parseColor("#000000"))
+        btnOptionD.setTextColor(Color.parseColor("#000000"))
         btnOptionB.isEnabled = true
         btnOptionC.isEnabled = true
         btnOptionD.isEnabled = true
@@ -226,10 +234,14 @@ class QuizDetail : AppCompatActivity() {
     }
     private fun checkButtonB(){
         btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option_checked)
+        btnOptionB.setTextColor(Color.parseColor("#FFFFFF"))
         btnOptionB.isEnabled = false
         btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionA.setTextColor(Color.parseColor("#000000"))
+        btnOptionC.setTextColor(Color.parseColor("#000000"))
+        btnOptionD.setTextColor(Color.parseColor("#000000"))
         btnOptionA.isEnabled = true
         btnOptionC.isEnabled = true
         btnOptionD.isEnabled = true
@@ -238,10 +250,14 @@ class QuizDetail : AppCompatActivity() {
     }
     private fun checkButtonC(){
         btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option_checked)
+        btnOptionC.setTextColor(Color.parseColor("#FFFFFF"))
         btnOptionC.isEnabled = false
         btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionA.setTextColor(Color.parseColor("#000000"))
+        btnOptionB.setTextColor(Color.parseColor("#000000"))
+        btnOptionD.setTextColor(Color.parseColor("#000000"))
         btnOptionA.isEnabled = true
         btnOptionB.isEnabled = true
         btnOptionD.isEnabled = true
@@ -250,10 +266,14 @@ class QuizDetail : AppCompatActivity() {
     }
     private fun checkButtonD(){
         btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option_checked)
+        btnOptionD.setTextColor(Color.parseColor("#FFFFFF"))
         btnOptionD.isEnabled = false
         btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionA.setTextColor(Color.parseColor("#000000"))
+        btnOptionB.setTextColor(Color.parseColor("#000000"))
+        btnOptionC.setTextColor(Color.parseColor("#000000"))
         btnOptionA.isEnabled = true
         btnOptionB.isEnabled = true
         btnOptionC.isEnabled = true
