@@ -40,7 +40,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_row="0"
-                    android:layout_column="2"
                     android:background="@drawable/materi_menu"
                     android:text="Modul 1"
                     android:textColor="@color/black"
