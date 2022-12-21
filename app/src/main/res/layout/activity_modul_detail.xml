@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.ModulMateri.modul.ModulDetail">
+    tools:context=".Activity.ModulMateri.modul.ModulDetail"
+    >
 
     <TextView
         android:id="@+id/modul_detail_tv_modul_title"
@@ -23,27 +24,58 @@
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
+
         >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/materi_menu"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="materi"
+            android:text="Tap to Open Materi"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
             android:layout_gravity="center"
             />
     </androidx.cardview.widget.CardView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="left"
+        android:layout_marginLeft="20dp"
+        android:textSize="30sp"
+        android:text="Level UP"
+        android:textStyle="bold"
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/modul_detail_cv_quiz"
         android:layout_width="374dp"
-        android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
+        android:layout_height="300dp"
         >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/materi_quiz"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="60dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="quiz"
-            android:layout_gravity="center"
+            android:text="TAP"
+            android:textStyle="bold"
+            android:textSize="40sp"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="top|center_horizontal"
             />
     </androidx.cardview.widget.CardView>
 
