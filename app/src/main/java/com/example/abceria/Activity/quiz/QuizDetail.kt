@@ -132,7 +132,6 @@ class QuizDetail : AppCompatActivity() {
                 rightNavigationButton.text = "Selanjutnya"
                 isFinish = false
             }
-
         }
     }
 
@@ -151,7 +150,6 @@ class QuizDetail : AppCompatActivity() {
                     question.point = document.get("point") as Long
                     questions.add(question)
                 }
-
             }.continueWith{
                 answerState = Array(questions.size) { "" }
                 optionState = Array(questions.size) { "" }
@@ -169,7 +167,6 @@ class QuizDetail : AppCompatActivity() {
                 quizActionListener()
             }
         }
-
     }
 
     private fun initComponents(){
@@ -182,13 +179,13 @@ class QuizDetail : AppCompatActivity() {
         btnOptionD = findViewById(R.id.btn_option_D)
 
         //navigator
-        rightNavigationButton = findViewById(R.id.quize_detail_btn_right)
-        leftNavigatorButton = findViewById(R.id.quiz_detail_btn_left)
+        rightNavigationButton = findViewById(R.id.quiz_detail_btn_right)
+        leftNavigatorButton = findViewById(R.id.quize_detail_btn_left)
 
-        btnOptionA.setBackgroundColor(Color.WHITE)
-        btnOptionB.setBackgroundColor(Color.WHITE)
-        btnOptionC.setBackgroundColor(Color.WHITE)
-        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
     }
 
     private fun setButtonOptionListener(){
@@ -206,21 +203,21 @@ class QuizDetail : AppCompatActivity() {
         }
     }
     private fun resetButtonCheck(){
-        btnOptionA.setBackgroundColor(Color.WHITE)
-        btnOptionB.setBackgroundColor(Color.WHITE)
-        btnOptionC.setBackgroundColor(Color.WHITE)
-        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionA.isEnabled = true
         btnOptionB.isEnabled = true
         btnOptionC.isEnabled = true
         btnOptionD.isEnabled = true
     }
     private fun checkButtonA(){
-        btnOptionA.setBackgroundColor(Color.GRAY)
+        btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option_checked)
         btnOptionA.isEnabled = false
-        btnOptionB.setBackgroundColor(Color.WHITE)
-        btnOptionC.setBackgroundColor(Color.WHITE)
-        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionB.isEnabled = true
         btnOptionC.isEnabled = true
         btnOptionD.isEnabled = true
@@ -228,11 +225,11 @@ class QuizDetail : AppCompatActivity() {
         optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_A
     }
     private fun checkButtonB(){
-        btnOptionB.setBackgroundColor(Color.GRAY)
+        btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option_checked)
         btnOptionB.isEnabled = false
-        btnOptionA.setBackgroundColor(Color.WHITE)
-        btnOptionC.setBackgroundColor(Color.WHITE)
-        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionA.isEnabled = true
         btnOptionC.isEnabled = true
         btnOptionD.isEnabled = true
@@ -240,11 +237,11 @@ class QuizDetail : AppCompatActivity() {
         optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_B
     }
     private fun checkButtonC(){
-        btnOptionC.setBackgroundColor(Color.GRAY)
+        btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option_checked)
         btnOptionC.isEnabled = false
-        btnOptionA.setBackgroundColor(Color.WHITE)
-        btnOptionB.setBackgroundColor(Color.WHITE)
-        btnOptionD.setBackgroundColor(Color.WHITE)
+        btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionA.isEnabled = true
         btnOptionB.isEnabled = true
         btnOptionD.isEnabled = true
@@ -252,11 +249,11 @@ class QuizDetail : AppCompatActivity() {
         optionState[questionIndex] = com.example.abceria.utility.Question.OPTION_C
     }
     private fun checkButtonD(){
-        btnOptionD.setBackgroundColor(Color.GRAY)
+        btnOptionD.setBackgroundResource(R.drawable.quiz_detail_option_checked)
         btnOptionD.isEnabled = false
-        btnOptionA.setBackgroundColor(Color.WHITE)
-        btnOptionB.setBackgroundColor(Color.WHITE)
-        btnOptionC.setBackgroundColor(Color.WHITE)
+        btnOptionA.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionB.setBackgroundResource(R.drawable.quiz_detail_option)
+        btnOptionC.setBackgroundResource(R.drawable.quiz_detail_option)
         btnOptionA.isEnabled = true
         btnOptionB.isEnabled = true
         btnOptionC.isEnabled = true
