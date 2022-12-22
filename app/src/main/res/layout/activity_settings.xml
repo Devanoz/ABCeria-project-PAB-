@@ -20,7 +20,7 @@
 
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/settings_imv_profileImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -28,6 +28,7 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         />
+
 
     <TextView
         android:id="@+id/settings_tv_fullName"
