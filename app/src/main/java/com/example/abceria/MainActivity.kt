@@ -10,7 +10,7 @@ import com.example.abceria.Activity.auth.Login
 import com.example.abceria.fragment.Home
 import com.example.abceria.fragment.Leaderboard
 import com.example.abceria.fragment.ListModul
-import com.example.abceria.fragment.Profile
+import com.example.abceria.fragment.ProfileFrag
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseUser
 
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.profil_icon -> {
                     toolbar.title = "Profile"
-                    selectedFragment = Profile()
+                    selectedFragment = ProfileFrag()
                     supportActionBar?.title = "Kuis"
                     true
                 }
