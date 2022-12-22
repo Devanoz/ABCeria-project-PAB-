@@ -67,7 +67,8 @@ class Home : Fragment() {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+                filterList(query)
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -83,16 +84,18 @@ class Home : Fragment() {
         if (query != null) {
             val filteredList = java.util.ArrayList<Modul>()
             for (i in dataSet) {
-                if (i.title.lowercase(Locale.ROOT).contains(query)) {
+                if (i.title.lowercase().contains(query)) {
                     filteredList.add(i)
                 }
             }
 
             if (filteredList.isEmpty()) {
 //                Toast.makeText(this, "No Data found", Toast.LENGTH_SHORT).show()
-                Toast.makeText(context, "No Data found", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "No Data found", Toast.LENGTH_SHORT).show()
+                rvListModul.adapter = listModulAdapter
             } else {
                 adapter.setFilteredList(filteredList)
+                rvListModul.adapter = adapter
             }
         }
     }
@@ -105,6 +108,7 @@ class Home : Fragment() {
                 modul.title = document.get("title").toString()
                 modul.description = document.get("descriptionn").toString()
                 modulList.add(modul)
+                dataSet.add(modul)
             }
             listModulAdapter = ListModulAdapter(modulList,this.context)
             rvListModul.adapter = listModulAdapter
