@@ -17,8 +17,9 @@
         android:theme="@style/Theme.ABCeria"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
-            android:name=".afterLogin"
+            android:name=".Activity.auth.afterLogin"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -90,6 +91,7 @@
         <activity
             android:name=".Activity.settings.Settings"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
